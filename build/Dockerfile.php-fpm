@@ -1,39 +1,33 @@
-FROM php:7-fpm
-RUN apt-get update \
-    && apt-get install -y \
-        # intl extension dependencies
-        libicu-dev \
-        g++ \
-        # mcrypt extension dependencies
-        mcrypt \
-        libmcrypt-dev \
-        # xml extension dependencies
-        libxml2 \
-        libxml2-dev \
-        # gd extension dependencies
-        libfreetype6-dev \
-        libjpeg62-turbo-dev \
-        libpng12-dev \
-    && apt-get --purge autoremove -y \
-    && apt-get clean autoclean \
-    && rm -rf /var/lib/apt/lists/* \
-    && rm -rf /usr/share/man/?? \
-    && rm -rf /usr/share/man/??_*
+FROM alpine:edge
 
-RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+RUN echo "http://dl-4.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
+    apk --update add \
+        php7-fpm \
+        php7-bcmath \
+        php7-curl \
+        php7-dom \
+        php7-gd \
+        php7-intl \
+        php7-json \
+        php7-mbstring \
+        php7-mcrypt \
+        php7-opcache \
+        php7-openssl \
+        php7-pcntl \
+        php7-pdo \
+        php7-pdo_mysql \
+        php7-session \
+        php7-sockets \
+        php7-xml \
+        php7-redis \
+        php7-xdebug
 
-RUN docker-php-ext-install -j$(nproc) \
-        bcmath \
-        gd \
-        iconv \
-        intl \
-        mbstring \
-        mcrypt \
-        opcache \
-        pdo_mysql \
-        pcntl \
-        sockets
+RUN rm -rf /var/cache/apk/*
 
-# Enable and configure xdebug
-RUN pecl install xdebug
-RUN docker-php-ext-enable xdebug
+COPY build/php.ini /etc/php7/conf.d/50-setting.ini
+COPY build/php-fpm.conf /etc/php7/php-fpm.conf
+
+VOLUME /app
+EXPOSE 9000
+
+CMD ["php-fpm7", "-F"]

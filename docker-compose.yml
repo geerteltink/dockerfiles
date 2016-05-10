@@ -1,5 +1,13 @@
 version: "2"
 services:
+
+  datastore:
+    build:
+      context: .
+      dockerfile: build/Dockerfile.data
+    volumes:
+      - .:/opt/data
+
   nginx:
     build:
       context: .
@@ -8,7 +16,8 @@ services:
       - "80:80"
     volumes_from:
       - datastore
-      #- /d/projects/docker-test:/var/www/
+    links:
+      - php-fpm
 
   php-fpm:
     build:
@@ -18,23 +27,19 @@ services:
       - "9000:9000"
     volumes_from:
       - datastore
+    links:
+      - db
+      - redis
 
   db:
     image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=docker
+      - MYSQL_DATABASE=docker
+      - MYSQL_USER=docker
+      - MYSQL_PASSWORD=docker
     volumes_from:
       - datastore
-    environment:
-     - MYSQL_ROOT_PASSWORD=docker
-     - MYSQL_DATABASE=docker
-     - MYSQL_USER=docker
-     - MYSQL_PASSWORD=docker
 
   redis:
     image: redis:3-alpine
-
-  datastore:
-    build:
-      context: .
-      dockerfile: build/Dockerfile.data
-    volumes:
-      - .:/opt/data
