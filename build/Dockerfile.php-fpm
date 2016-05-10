@@ -1,0 +1,39 @@
+FROM php:7-fpm
+RUN apt-get update \
+    && apt-get install -y \
+        # intl extension dependencies
+        libicu-dev \
+        g++ \
+        # mcrypt extension dependencies
+        mcrypt \
+        libmcrypt-dev \
+        # xml extension dependencies
+        libxml2 \
+        libxml2-dev \
+        # gd extension dependencies
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
+        libpng12-dev \
+    && apt-get --purge autoremove -y \
+    && apt-get clean autoclean \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /usr/share/man/?? \
+    && rm -rf /usr/share/man/??_*
+
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+
+RUN docker-php-ext-install -j$(nproc) \
+        bcmath \
+        gd \
+        iconv \
+        intl \
+        mbstring \
+        mcrypt \
+        opcache \
+        pdo_mysql \
+        pcntl \
+        sockets
+
+# Enable and configure xdebug
+RUN pecl install xdebug
+RUN docker-php-ext-enable xdebug
