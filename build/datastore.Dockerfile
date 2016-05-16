@@ -1,4 +1,4 @@
 FROM busybox
 
 # content
-ADD . /opt/data
+ADD . /app

@@ -5,15 +5,15 @@ services:
     build:
       context: .
       dockerfile: build/datastore.Dockerfile
-    container_name: datastore
+    container_name: dockerize-datastore
     volumes:
-      - .:/opt/data
+      - .:/app
 
   web:
     build:
       context: .
       dockerfile: build/nginx.Dockerfile
-    container_name: web
+    container_name: dockerize-web
     ports:
       - "80:80"
     volumes_from:
@@ -25,7 +25,7 @@ services:
     build:
       context: .
       dockerfile: build/php-fpm.Dockerfile
-    container_name: php
+    container_name: dockerize-php
     ports:
       - "9000:9000"
     volumes_from:
@@ -37,7 +37,7 @@ services:
 
   db:
     image: mysql:5.7
-    container_name: db
+    container_name: dockerize-db
     ports:
       - "3306:3306"
     environment:
@@ -50,7 +50,7 @@ services:
 
   redis:
     image: redis:3-alpine
-    container_name: redis
+    container_name: dockerize-redis
     ports:
       - "6379:6379"
 
@@ -58,7 +58,7 @@ services:
     build:
       context: .
       dockerfile: build/mailhog.Dockerfile
-    container_name: mailhog
+    container_name: dockerize-mailhog
     ports:
       - "1025:1025"
       - "8025:8025"

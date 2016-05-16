@@ -41,7 +41,7 @@ RUN ln -s /usr/bin/php7 /usr/bin/php
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer.phar
 RUN mv /usr/bin/composer.phar /usr/bin/composer
 
-VOLUME /app
+WORKDIR /app
 EXPOSE 9000
 
 CMD ["php-fpm7", "-F"]
