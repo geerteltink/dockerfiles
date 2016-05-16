@@ -11,6 +11,7 @@ RUN apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testin
         php7-ctype \
         php7-dom \
         php7-gd \
+        php7-iconv \
         php7-intl \
         php7-json \
         php7-mbstring \
