@@ -3,8 +3,8 @@
 Includes:
 
 - PHP-FPM + CLI
-- composer
-- ssmtp to catch php mail() and forwards it to MailHog
+- [composer](https://getcomposer.org/doc/)
+- [ssmtp](http://linux.die.net/man/8/ssmtp) to catch php mail() and forwards it to MailHog
 
 ## Commands
 
