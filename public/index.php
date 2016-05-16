@@ -43,7 +43,7 @@ $extensions = [
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="/" class="navbar-brand">Docker Web Development Stackk</a>
+                <a href="/" class="navbar-brand">Docker Web Development Stack</a>
             </div>
         </div>
     </header>
