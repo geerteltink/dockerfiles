@@ -4,25 +4,28 @@ services:
   datastore:
     build:
       context: .
-      dockerfile: build/Dockerfile.data
+      dockerfile: build/datastore.Dockerfile
+    container_name: datastore
     volumes:
       - .:/opt/data
 
-  nginx:
+  web:
     build:
       context: .
-      dockerfile: build/Dockerfile.nginx
+      dockerfile: build/nginx.Dockerfile
+    container_name: web
     ports:
       - "80:80"
     volumes_from:
       - datastore
     links:
-      - php-fpm
+      - php
 
-  php-fpm:
+  php:
     build:
       context: .
-      dockerfile: build/Dockerfile.php-fpm
+      dockerfile: build/php-fpm.Dockerfile
+    container_name: php
     ports:
       - "9000:9000"
     volumes_from:
@@ -30,9 +33,13 @@ services:
     links:
       - db
       - redis
+      - mailhog
 
   db:
     image: mysql:5.7
+    container_name: db
+    ports:
+      - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=docker
       - MYSQL_DATABASE=docker
@@ -43,3 +50,15 @@ services:
 
   redis:
     image: redis:3-alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+
+  mailhog:
+    build:
+      context: .
+      dockerfile: build/mailhog.Dockerfile
+    container_name: mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
