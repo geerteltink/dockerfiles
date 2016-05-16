@@ -30,9 +30,9 @@ RUN apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testin
 
 RUN rm -rf /var/cache/apk/*
 
-ADD build/php.ini /etc/php7/conf.d/50-setting.ini
-ADD build/php-fpm.conf /etc/php7/php-fpm.conf
-ADD build/ssmtp.conf /etc/ssmtp/ssmtp.conf
+ADD php.ini /etc/php7/conf.d/50-setting.ini
+ADD php-fpm.conf /etc/php7/php-fpm.conf
+ADD ssmtp.conf /etc/ssmtp/ssmtp.conf
 
 # Create symlink for php
 RUN ln -s /usr/bin/php7 /usr/bin/php
