@@ -25,7 +25,7 @@ $extensions = [
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Docker - Development Stack</title>
+    <title>Docker Web Development Stack</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
@@ -43,7 +43,7 @@ $extensions = [
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="/" class="navbar-brand">Docker Dev Stack</a>
+                <a href="/" class="navbar-brand">Docker Web Development Stackk</a>
             </div>
         </div>
     </header>

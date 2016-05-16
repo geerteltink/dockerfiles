@@ -1,17 +1,17 @@
 # docker-stack
 
-Skeleton for a docker php stack. Everything is in its own container, just like how it's meant to be.
+A collection of customized containers for a docker web development stack. Where possible they have a small footprint
+with [Alpine Linux](http://alpinelinux.org/)
 
-## Available containers:
-- web:
-    NGINX -> http://docker/
-- php:
-    PHP -> docker exec -ti php php <command>
-    composer -> docker exec -ti php composer <command>
-    ssmtp, catches php mail() and forwards it to MailHog
-- db: MySQL
-- redis: Redis
-- mailhog: MailHog -> http://docker:8025/
+## Usage
+
+Use a custom [docker-compose.yml(docker-compose.yml) file to do the work for you. Adjust with the settings needed for
+the project.
+
+Data is available through a datastore in /app.
+
+The app is available at http://docker/.
+[MailHog](https://github.com/mailhog/MailHog) is used to catch emails and can be accessed at http://docker:8025/.
 
 ## Docker commands
 
@@ -25,9 +25,6 @@ $ docker-compose up --build
 # Start a terminal for <container_name>
 $ docker exec -ti <container_name> /bin/bash
 $ docker exec -ti <container_name> /bin/sh
-
-# Run composer
-$ docker exec -ti php composer <command>
 
 # List containers
 $ docker ps

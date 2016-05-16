@@ -2,18 +2,14 @@ version: "2"
 services:
 
   datastore:
-    build:
-      context: .
-      dockerfile: build/datastore.Dockerfile
-    container_name: dockerize-datastore
+    image: xtreamwayz/datastore:latest
+    container_name: UNIQUE_NAME-datastore
     volumes:
       - .:/app
 
   web:
-    build:
-      context: .
-      dockerfile: build/nginx.Dockerfile
-    container_name: dockerize-web
+    image: xtreamwayz/nginx:latest
+    container_name: UNIQUE_NAME-web
     ports:
       - "80:80"
     volumes_from:
@@ -22,10 +18,8 @@ services:
       - php
 
   php:
-    build:
-      context: .
-      dockerfile: build/php-fpm.Dockerfile
-    container_name: dockerize-php
+    image: xtreamwayz/php:latest
+    container_name: UNIQUE_NAME-php
     ports:
       - "9000:9000"
     volumes_from:
@@ -37,7 +31,7 @@ services:
 
   db:
     image: mysql:5.7
-    container_name: dockerize-db
+    container_name: UNIQUE_NAME-db
     ports:
       - "3306:3306"
     environment:
@@ -50,15 +44,13 @@ services:
 
   redis:
     image: redis:3-alpine
-    container_name: dockerize-redis
+    container_name: UNIQUE_NAME-redis
     ports:
       - "6379:6379"
 
   mailhog:
-    build:
-      context: .
-      dockerfile: build/mailhog.Dockerfile
-    container_name: dockerize-mailhog
+    image: xtreamwayz/mailhog:latest
+    container_name: UNIQUE_NAME-mailhog
     ports:
       - "1025:1025"
       - "8025:8025"
