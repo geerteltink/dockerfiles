@@ -7,3 +7,6 @@ RUN apk --no-cache add \
 RUN rm -rf /var/cache/apk/*
 
 WORKDIR /app
+RUN npm install
+
+CMD ["node", "--version"]
