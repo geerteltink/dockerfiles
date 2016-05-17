@@ -54,3 +54,11 @@ services:
     ports:
       - "1025:1025"
       - "8025:8025"
+
+  node:
+    image: node:slim
+    container_name: UNIQUE_NAME-node
+    volumes_from:
+      - datastore
+    working_dir: /app
+    command: npm install --no-bin-links
