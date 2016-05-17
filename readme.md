@@ -29,13 +29,14 @@ $ docker exec -ti <container_name> /bin/sh
 # List containers
 $ docker ps
 
-# Remove all containers
-$ docker rm -f `docker ps -a -q`
+# Remove one / all containers
+$ docker rm <container_id>
+$ docker rm -f $(docker ps -a -q)
 
 # List all docker images
 $ docker images
 
-# Remove all images
+# Remove one / all images
+$ docker rmi <container_id>
 $ docker rmi -f $(docker images -q)
-
 ```
