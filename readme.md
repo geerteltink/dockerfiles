@@ -5,7 +5,7 @@ with [Alpine Linux](http://alpinelinux.org/)
 
 ## Usage
 
-Use a custom [docker-compose.yml(docker-compose.yml) file to do the work for you. Adjust with the settings needed for
+Use a custom [docker-compose.yml](docker-compose.yml) file to do the work for you. Adjust with the settings needed for
 the project.
 
 Data is available through a datastore in /app.
