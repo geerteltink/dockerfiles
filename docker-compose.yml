@@ -49,7 +49,7 @@ services:
       - "6379:6379"
 
   mailhog:
-    image: xtreamwayz/mailhog
+    image: mailhog/mailhog
     container_name: UNIQUE_NAME-mailhog
     ports:
       - "1025:1025"
