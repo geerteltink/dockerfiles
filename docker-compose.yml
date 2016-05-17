@@ -29,8 +29,10 @@ services:
       - redis
       - mailhog
 
+    container_name:
+
   db:
-    image: mysql:5.7
+    image: xtreamwayz/mysql
     container_name: UNIQUE_NAME-db
     ports:
       - "3306:3306"
