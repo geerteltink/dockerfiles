@@ -2,13 +2,13 @@ version: "2"
 services:
 
   datastore:
-    image: xtreamwayz/datastore:latest
+    image: busybox
     container_name: UNIQUE_NAME-datastore
     volumes:
       - .:/app
 
   web:
-    image: xtreamwayz/nginx:latest
+    image: xtreamwayz/nginx
     container_name: UNIQUE_NAME-web
     ports:
       - "80:80"
@@ -18,7 +18,7 @@ services:
       - php
 
   php:
-    image: xtreamwayz/php:latest
+    image: xtreamwayz/php
     container_name: UNIQUE_NAME-php
     ports:
       - "9000:9000"
@@ -49,7 +49,7 @@ services:
       - "6379:6379"
 
   mailhog:
-    image: xtreamwayz/mailhog:latest
+    image: xtreamwayz/mailhog
     container_name: UNIQUE_NAME-mailhog
     ports:
       - "1025:1025"
