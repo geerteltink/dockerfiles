@@ -29,8 +29,6 @@ services:
       - redis
       - mailhog
 
-    container_name:
-
   db:
     image: xtreamwayz/mysql
     container_name: UNIQUE_NAME-db
