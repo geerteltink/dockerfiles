@@ -24,7 +24,7 @@ MYSQL_TEST_QUERY += CREATE USER IF NOT EXISTS '$(MYSQL_TEST_USER)'@'%' IDENTIFIE
 MYSQL_TEST_QUERY += GRANT ALL PRIVILEGES ON $(MYSQL_TEST_DATABASE).* TO '$(MYSQL_TEST_USER)'@'%';
 
 ifndef DOCKER
-$(error Docker not found)
+	$(error Docker not found)
 endif
 
 .DEFAULT: help
@@ -78,24 +78,24 @@ build: clean
 	mkdir -p public/assets/img
 	mkdir -p public/assets/js
 	$(DOCKER_NODE) node_modules/uglify-js/bin/uglifyjs \
-	            node_modules/jquery/dist/jquery.js \
-	            --compress --mangle --screw-ie8 --output public/assets/js/jquery.min.js
+		node_modules/jquery/dist/jquery.js \
+		--compress --mangle --screw-ie8 --output public/assets/js/jquery.min.js
 	$(DOCKER_NODE) node_modules/uglify-js/bin/uglifyjs \
-	            node_modules/bootstrap/dist/js/umd/util.js \
-	            node_modules/bootstrap/dist/js/umd/alert.js \
-				node_modules/bootstrap/dist/js/umd/button.js \
-				node_modules/bootstrap/dist/js/umd/carousel.js \
-				node_modules/bootstrap/dist/js/umd/collapse.js \
-				node_modules/bootstrap/dist/js/umd/dropdown.js \
-				node_modules/bootstrap/dist/js/umd/modal.js \
-	            --compress --mangle --screw-ie8 --output public/assets/js/core.min.js
+		node_modules/bootstrap/dist/js/umd/util.js \
+		node_modules/bootstrap/dist/js/umd/alert.js \
+		node_modules/bootstrap/dist/js/umd/button.js \
+		node_modules/bootstrap/dist/js/umd/carousel.js \
+		node_modules/bootstrap/dist/js/umd/collapse.js \
+		node_modules/bootstrap/dist/js/umd/dropdown.js \
+		node_modules/bootstrap/dist/js/umd/modal.js \
+		--compress --mangle --screw-ie8 --output public/assets/js/core.min.js
 	$(DOCKER_NODE) node_modules/node-sass/bin/node-sass \
-	            resources/public/scss/core.scss data/build/core.css
+		resources/public/scss/core.scss data/build/core.css
 	$(DOCKER_NODE) node_modules/postcss-cli/bin/postcss \
-	            --use autoprefixer --autoprefixer.browsers "last 2 versions" \
-	            --output data/build/core.prefixed.css data/build/core.css
+		--use autoprefixer --autoprefixer.browsers "last 2 versions" \
+		--output data/build/core.prefixed.css data/build/core.css
 	$(DOCKER_NODE) node_modules/uglifycss/uglifycss \
-	            data/build/core.prefixed.css > public/assets/css/core.min.css
+		data/build/core.prefixed.css > public/assets/css/core.min.css
 	cp node_modules/font-awesome/fonts/*.* public/assets/fonts/
 	cp resources/public/img/* public/assets/img/
 
