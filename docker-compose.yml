@@ -3,13 +3,13 @@ services:
 
   datastore:
     image: busybox
-    container_name: UNIQUE_NAME-datastore
+    container_name: ${PROJECT_ID}-datastore
     volumes:
       - .:/app
 
   web:
     image: xtreamwayz/nginx
-    container_name: UNIQUE_NAME-web
+    container_name: ${PROJECT_ID}-web
     ports:
       - "80:80"
     volumes_from:
@@ -19,7 +19,7 @@ services:
 
   php:
     image: xtreamwayz/php
-    container_name: UNIQUE_NAME-php
+    container_name: ${PROJECT_ID}-php
     ports:
       - "9000:9000"
     volumes_from:
@@ -31,34 +31,22 @@ services:
 
   db:
     image: xtreamwayz/mysql
-    container_name: UNIQUE_NAME-db
+    container_name: ${PROJECT_ID}-db
     ports:
       - "3306:3306"
-    environment:
-      - MYSQL_ROOT_PASSWORD=docker
-      - MYSQL_DATABASE=docker
-      - MYSQL_USER=docker
-      - MYSQL_PASSWORD=docker
+    env_file: .env
     volumes_from:
       - datastore
 
   redis:
     image: redis:3-alpine
-    container_name: UNIQUE_NAME-redis
+    container_name: ${PROJECT_ID}-redis
     ports:
       - "6379:6379"
 
   mailhog:
     image: mailhog/mailhog
-    container_name: UNIQUE_NAME-mailhog
+    container_name: ${PROJECT_ID}-mailhog
     ports:
       - "1025:1025"
       - "8025:8025"
-
-  node:
-    image: node:slim
-    container_name: UNIQUE_NAME-node
-    volumes_from:
-      - datastore
-    working_dir: /app
-    command: npm install --no-bin-links

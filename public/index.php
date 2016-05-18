@@ -3,7 +3,7 @@
 //use \PDO;
 
 try {
-    $dbh = new PDO('mysql:host=db;dbname=docker', 'docker', 'docker');
+    $dbh = new PDO('mysql:host=db;dbname=docker', 'root', 'docker');
 } catch (Exception $e) {
     $dbError = $e->getMessage();
 }
