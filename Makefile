@@ -40,7 +40,7 @@ install:
 	fi;
 	@if [ -n "$(MYSQL_TEST_DATABASE)" ] && [ -n "$(MYSQL_TEST_USER)" ] && [ -n "$(MYSQL_TEST_PASSWORD)" ]; then \
 		echo "... Creating test database"; \
-		$(DOCKER_MYSQL) -e "$(MYSQLTEST_QUERY)"; \
+		$(DOCKER_MYSQL) -e "$(MYSQL_TEST_QUERY)"; \
 	fi;
 	@if [ -f package.json ]; then \
 		$(DOCKER_NODE) npm install --no-bin-links; \
