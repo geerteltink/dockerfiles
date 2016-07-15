@@ -16,11 +16,16 @@ The app is available at http://docker/.
 ## Docker commands
 
 ```bash
-# Start docker
+# Start containers
 $ docker-compose up
+$ docker-compose -f docker-elk.yml up -d
 
-# Start docker and force rebuilding the containers
+# Start and force rebuilding the containers
 $ docker-compose up --build
+
+# Stop containers
+$ docker-compose stop
+$ docker-compose -f docker-elk.yml stop
 
 # Start a terminal for <container_name>
 $ docker exec -ti <container_name> /bin/bash

@@ -1,0 +1,53 @@
+version: "2"
+services:
+
+  datastore:
+    image: busybox
+    container_name: ${PROJECT_ID}-datastore
+    volumes:
+      - .:/app
+
+  elasticsearch:
+    image: elasticsearch:latest
+    container_name: ${PROJECT_ID}-elasticsearch
+    command: elasticsearch -Des.network.host=0.0.0.0
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+
+  logstash:
+    image: logstash:latest
+    container_name: ${PROJECT_ID}-logstash
+    command: logstash -f /app/docker/logstash/logstash.conf
+    restart: always
+    environment:
+      LOGSPOUT: ignore
+    volumes_from:
+      - datastore
+    ports:
+      - "5000:5000"
+      - "5000:5000/udp"
+    links:
+      - elasticsearch
+
+  kibana:
+    image: kibana:latest
+    container_name: ${PROJECT_ID}-kibana
+    ports:
+      - "5601:5601"
+    links:
+      - elasticsearch
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+
+  logspout:
+    build: ./docker/logspout
+    container_name: ${PROJECT_ID}-logspout
+    command: logstash://logstash:5000
+    restart: always
+    #environment:
+    #  - ROUTE_URIS=logstash://logstash:5000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    links:
+      - logstash
