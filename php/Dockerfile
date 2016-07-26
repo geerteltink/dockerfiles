@@ -1,4 +1,4 @@
-# PHP 7.0.7
+# PHP 7.0.9
 FROM alpine:edge
 
 RUN apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing add \
@@ -17,11 +17,13 @@ RUN apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testin
         php7-json \
         php7-mbstring \
         php7-mcrypt \
+        php7-mysqli \
         php7-opcache \
         php7-openssl \
         php7-pcntl \
         php7-pdo \
         php7-pdo_mysql \
+        php7-pdo_sqlite \
         php7-phar \
         php7-session \
         php7-sockets \
@@ -31,12 +33,18 @@ RUN apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testin
 
 RUN rm -rf /var/cache/apk/*
 
+# Ensure www-data user exists
+RUN addgroup -g 1000 -S www-data \
+	&& adduser -u 1000 -D -S -G www-data www-data
+
+# Copy config
 ADD php.ini /etc/php7/conf.d/50-setting.ini
 ADD php-fpm.conf /etc/php7/php-fpm.conf
 ADD ssmtp.conf /etc/ssmtp/ssmtp.conf
 
 # Create symlink for php
 RUN ln -s /usr/bin/php7 /usr/bin/php
+RUN php --version
 
 # Install Composer and make it available in the PATH
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer.phar
