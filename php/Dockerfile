@@ -29,7 +29,8 @@ RUN apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testin
         php7-sockets \
         php7-xml \
         php7-redis \
-        php7-xdebug
+        php7-xdebug \
+        php7-zlib
 
 RUN rm -rf /var/cache/apk/*
 
