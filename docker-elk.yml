@@ -18,7 +18,7 @@ services:
   logstash:
     image: logstash:latest
     container_name: ${PROJECT_ID}-logstash
-    command: logstash -f /app/docker/logstash/logstash.conf
+    command: logstash -f /app/logstash/logstash.conf
     restart: always
     environment:
       LOGSPOUT: ignore
@@ -41,12 +41,12 @@ services:
       - ELASTICSEARCH_URL=http://elasticsearch:9200
 
   logspout:
-    build: ./docker/logspout
+    build: ./logspout
     container_name: ${PROJECT_ID}-logspout
     command: logstash://logstash:5000
     restart: always
-    #environment:
-    #  - ROUTE_URIS=logstash://logstash:5000
+    environment:
+      - ROUTE_URIS=logstash://logstash:5000
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     links:
