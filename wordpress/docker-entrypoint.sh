@@ -12,7 +12,7 @@ if ! [ -e /app/public/index.php -a -e /app/public/wp-includes/version.php ]; the
     chown -R www-data:www-data /app
 fi
 
-if [ ! -e wp-config.php ]; then
+if [ ! -e /app/public/wp-config.php ]; then
     echo "WordPress config not found, creating one for you..."
     cp -a /app/wp-config.php /app/public/wp-config.php
     chown www-data:www-data /app/public/wp-config.php
