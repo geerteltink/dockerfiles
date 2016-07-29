@@ -1,0 +1,59 @@
+version: "2"
+services:
+
+  # WordPress docker
+  #
+  # Required dir structure:
+  #  - data/mysql/      -> Persitent MySQL data
+  #  - data/wordpress/  -> WordPress source code (optional if you want code completion in your IDE)
+  #  - themes/          -> themes
+  #  - plugins/         -> plugins
+  #  - uploads/         -> uploads
+
+  datastore:
+    image: xtreamwayz/wordpress
+    container_name: ${PROJECT_ID}-datastore
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+      - ./data/wordpress:/app/public
+      - ./plugins:/app/public/wp-content/plugins
+      - ./themes:/app/public/wp-content/themes
+      - ./uploads:/app/public/wp-content/uploads
+
+  web:
+    image: xtreamwayz/nginx
+    env_file: .env
+    container_name: ${PROJECT_ID}-web
+    ports:
+      - "80:80"
+    volumes_from:
+      - datastore
+    links:
+      - php
+
+  php:
+    image: xtreamwayz/php
+    env_file: .env
+    container_name: ${PROJECT_ID}-php
+    ports:
+      - "9000:9000"
+    volumes_from:
+      - datastore
+    links:
+      - db
+
+  db:
+    image: xtreamwayz/mysql
+    env_file: .env
+    container_name: ${PROJECT_ID}-db
+    ports:
+      - "3306:3306"
+    volumes_from:
+      - datastore
+
+  #mailhog:
+  #  image: mailhog/mailhog
+  #  container_name: ${PROJECT_ID}-mailhog
+  #  ports:
+  #    - "1025:1025"
+  #    - "8025:8025"
