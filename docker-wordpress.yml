@@ -4,11 +4,14 @@ services:
   # WordPress docker
   #
   # Required dir structure:
-  #  - data/mysql/      -> Persitent MySQL data
-  #  - data/wordpress/  -> WordPress source code (optional if you want code completion in your IDE)
-  #  - themes/          -> themes
-  #  - plugins/         -> plugins
-  #  - uploads/         -> uploads
+  #
+  #	project_root
+  #	├── data
+  #	│   ├── mysql       -> Persitent MySQL data
+  #	│   └── wordpress   -> WordPress source code (optional if you want code completion in your IDE)
+  #	├── themes
+  #	├── plugins
+  #	└── uploads
 
   datastore:
     image: xtreamwayz/wordpress
@@ -57,3 +60,4 @@ services:
   #  ports:
   #    - "1025:1025"
   #    - "8025:8025"
+
