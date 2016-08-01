@@ -8,5 +8,3 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY docker.ico /opt/media/images/docker.ico
 COPY docker.png /opt/media/images/docker.png
 
-RUN chown -R www-data:www-data /opt/media/images/*
-
