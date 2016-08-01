@@ -5,8 +5,8 @@ RUN mkdir -p /opt/media/images
 # config
 COPY default.conf /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY favicon.ico /opt/media/images/favicon.ico
-COPY favicon.png /opt/media/images/favicon.png
+COPY docker.ico /opt/media/images/docker.ico
+COPY docker.png /opt/media/images/docker.png
 
 RUN chown -R www-data:www-data /opt/media/images/*
 
