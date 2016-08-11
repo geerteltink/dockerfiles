@@ -33,6 +33,8 @@ services:
     ports:
       - "3306:3306"
     env_file: .env
+    #volumes:
+    #  - ./resources/mysql-dump:/docker-entrypoint-initdb.d
     volumes_from:
       - datastore
 
