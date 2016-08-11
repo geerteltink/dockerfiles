@@ -20,8 +20,6 @@ services:
   php:
     image: xtreamwayz/php
     container_name: ${PROJECT_ID}-php
-    ports:
-      - "9000:9000"
     volumes_from:
       - datastore
     links:
