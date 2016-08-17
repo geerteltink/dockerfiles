@@ -5,8 +5,8 @@ with [Alpine Linux](http://alpinelinux.org/)
 
 ## Usage
 
-Use a custom [docker-compose.yml](docker-compose.yml) file to do the work for you. Adjust with the settings needed for
-the project.
+Use a custom [docker-compose.yml](docker-compose.yml) file to do the work for you. Adjust the settings needed for
+the project. Copy `.env.dist` to `.env` and change the project id.
 
 Data is available through a datastore in /app.
 
