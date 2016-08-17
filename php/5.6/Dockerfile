@@ -39,7 +39,7 @@ RUN addgroup -g 1000 -S www-data \
 
 # Copy config
 ADD php.ini /etc/php5/conf.d/50-setting.ini
-ADD php-fpm.conf /etc/php7/php-fpm.conf
+ADD php-fpm.conf /etc/php5/php-fpm.conf
 ADD ssmtp.conf /etc/ssmtp/ssmtp.conf
 
 RUN php --version
@@ -51,4 +51,4 @@ RUN mv /usr/bin/composer.phar /usr/bin/composer
 WORKDIR /app
 EXPOSE 9000
 
-CMD ["php-fpm5", "-F"]
+CMD ["php-fpm", "-F"]
