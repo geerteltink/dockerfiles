@@ -1,4 +1,13 @@
-# PHP 7
+# Supported tags
+
+- latest ([7.0/Dockerfile](https://github.com/xtreamwayz/docker-stack/blob/master/php/7.0/Dockerfile))
+- 5.6 ([5.6/Dockerfile](https://github.com/xtreamwayz/docker-stack/blob/master/php/5.6/Dockerfile))
+
+## PHP 5.6
+
+*Build with the [packages](http://pkgs.alpinelinux.org/packages?name=php5*) from Alpine Linux.*
+
+## PHP 7
 
 *Build with the [packages](http://pkgs.alpinelinux.org/packages?name=php7*) from Alpine Linux.*
 
