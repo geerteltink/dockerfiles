@@ -1,17 +1,18 @@
 # docker-stack
 
-A collection of customized containers for a docker web development stack. Where possible they have a small footprint with [Alpine Linux](http://alpinelinux.org/)
+*nginx, php, mysql, redis, mailhog, livereload*
+
+A collection of customized containers for a docker web development stack. Where possible the containers are build on top of [Alpine Linux](http://alpinelinux.org/) for a small footprint.
 
 ## Usage
 
-*nginx, php, mysql, redis, mailhog*
+1. Use a custom [docker-compose.yml](docker-compose.yml) file to do the work for you. Adjust the settings needed for the project.
+2. Copy `.env.dist` to `.env` and change the project id.
+3. Start the container with `docker-compose up -d`.
 
-Use a custom [docker-compose.yml](docker-compose.yml) file to do the work for you. Adjust the settings needed for the project. Copy `.env.dist` to `.env` and change the project id.
-
-Data is available in the containers through a datastore in /app.
-
-The app is available at http://localhost/.
-[MailHog](https://github.com/mailhog/MailHog) is used to catch emails and can be accessed at http://localhost:8025/.
+- Data is available in the containers through a datastore in /app.
+- The app is available at [http://localhost/](http://localhost/).
+- [MailHog](https://github.com/mailhog/MailHog) is used to catch emails and can be accessed at [http://localhost:8025/](http://localhost:8025/).
 
 ## Docker commands
 
