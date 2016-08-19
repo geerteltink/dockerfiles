@@ -1,4 +1,4 @@
-# Supported tags
+# PHP
 
 - latest ([7.0/Dockerfile](https://github.com/xtreamwayz/docker-stack/blob/master/php/7.0/Dockerfile))
 - 5.6 ([5.6/Dockerfile](https://github.com/xtreamwayz/docker-stack/blob/master/php/5.6/Dockerfile))

@@ -1,4 +1,4 @@
-# Docker Livereload
+# Livereload
 
 To use, add this to your `docker-compose.yml` file:
 

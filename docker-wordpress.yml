@@ -1,17 +1,17 @@
+# WordPress docker
+#
+# Required dir structure:
+#
+#	project_root
+#	├── data
+#	│   ├── mysql       -> Persitent MySQL data
+#	│   └── wordpress   -> WordPress source code (optional if you want code completion in your IDE)
+#	├── themes
+#	├── plugins
+#	└── uploads
+
 version: "2"
 services:
-
-  # WordPress docker
-  #
-  # Required dir structure:
-  #
-  #	project_root
-  #	├── data
-  #	│   ├── mysql       -> Persitent MySQL data
-  #	│   └── wordpress   -> WordPress source code (optional if you want code completion in your IDE)
-  #	├── themes
-  #	├── plugins
-  #	└── uploads
 
   datastore:
     image: xtreamwayz/wordpress
@@ -54,10 +54,17 @@ services:
     volumes_from:
       - datastore
 
+  livereload:
+    image: xtreamwayz/livereload
+    container_name: ${PROJECT_ID}-livereload
+    ports:
+      - "35729:35729"
+    volumes_from:
+      - datastore
+
   #mailhog:
   #  image: mailhog/mailhog
   #  container_name: ${PROJECT_ID}-mailhog
   #  ports:
   #    - "1025:1025"
   #    - "8025:8025"
-
