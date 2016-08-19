@@ -35,7 +35,10 @@ RUN apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testin
         php7-zip \
         php7-zlib
 
-RUN rm -rf /var/cache/apk/*
+RUN rm -rf \
+		/var/cache/apk/* \
+   		/usr/share/doc \
+        /usr/share/man
 
 # Ensure www-data user exists
 RUN addgroup -g 1000 -S www-data \
