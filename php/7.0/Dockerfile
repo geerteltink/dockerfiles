@@ -54,9 +54,8 @@ RUN ln -s /usr/bin/php7 /usr/bin/php
 RUN php --version
 RUN php -m
 
-# Install Composer and make it available in the PATH
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer.phar
-RUN mv /usr/bin/composer.phar /usr/bin/composer
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 WORKDIR /app
 EXPOSE 9000
