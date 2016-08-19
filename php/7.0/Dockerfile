@@ -52,6 +52,7 @@ ADD ssmtp.conf /etc/ssmtp/ssmtp.conf
 # Create symlink for php
 RUN ln -s /usr/bin/php7 /usr/bin/php
 RUN php --version
+RUN php -m
 
 # Install Composer and make it available in the PATH
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer.phar
