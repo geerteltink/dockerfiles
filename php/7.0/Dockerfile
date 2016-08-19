@@ -6,6 +6,7 @@ RUN apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testin
         git \
         ssmtp \
         php7 \
+        php7-common \
         php7-fpm \
         php7-bcmath \
         php7-curl \
@@ -27,9 +28,11 @@ RUN apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testin
         php7-phar \
         php7-session \
         php7-sockets \
-        php7-xml \
-        php7-redis \
         php7-xdebug \
+        php7-xml \
+        php7-xmlreader \
+        php7-redis \
+        php7-zip \
         php7-zlib
 
 RUN rm -rf /var/cache/apk/*
