@@ -1,4 +1,3 @@
-# PHP 7.0.9
 FROM alpine:latest
 
 RUN apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing add \
