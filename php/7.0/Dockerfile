@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:edge
 
 RUN apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing add \
         curl \
@@ -32,29 +32,22 @@ RUN apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testin
         php7-xmlreader \
         php7-redis \
         php7-zip \
-        php7-zlib
-
-RUN rm -rf \
+        php7-zlib \
+    && rm -rf \
 		/var/cache/apk/* \
    		/usr/share/doc \
-        /usr/share/man
+        /usr/share/man \
+    && addgroup -g 1000 -S www-data \
+	&& adduser -u 1000 -D -S -G www-data www-data \
+    && ln -s /usr/bin/php7 /usr/bin/php
 
-# Ensure www-data user exists
-RUN addgroup -g 1000 -S www-data \
-	&& adduser -u 1000 -D -S -G www-data www-data
-
-# Copy config
 ADD php.ini /etc/php7/conf.d/50-setting.ini
 ADD php-fpm.conf /etc/php7/php-fpm.conf
 ADD ssmtp.conf /etc/ssmtp/ssmtp.conf
 
-# Create symlink for php
-RUN ln -s /usr/bin/php7 /usr/bin/php
-RUN php --version
-RUN php -m
-
-# Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN php --version \
+    && php -m \
+    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 WORKDIR /app
 EXPOSE 9000
