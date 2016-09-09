@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:edge
 
 RUN apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing add \
         curl \
@@ -32,27 +32,21 @@ RUN apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testin
         php5-xmlreader \
         php5-redis \
         php5-zip \
-        php5-zlib
-
-RUN rm -rf \
+        php5-zlib \
+    && rm -rf \
 		/var/cache/apk/* \
    		/usr/share/doc \
-        /usr/share/man
-
-# Ensure www-data user exists
-RUN addgroup -g 1000 -S www-data \
+        /usr/share/man \
+    && addgroup -g 1000 -S www-data \
 	&& adduser -u 1000 -D -S -G www-data www-data
 
-# Copy config
 ADD php.ini /etc/php5/conf.d/50-setting.ini
 ADD php-fpm.conf /etc/php5/php-fpm.conf
 ADD ssmtp.conf /etc/ssmtp/ssmtp.conf
 
-RUN php --version
-RUN php -m
-
-# Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN php --version \
+    && php -m \
+    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 WORKDIR /app
 EXPOSE 9000
