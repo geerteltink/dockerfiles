@@ -9,7 +9,7 @@ Create this dir structure:
 	project_root
 	├── data
 	│   ├── mysql       -> Persitent MySQL data
-	│   └── wordpress   -> WordPress source code (optional if you want code completion in your IDE)
+	│   └── wordpress   -> WordPress source code
 	├── themes
 	├── plugins
 	└── uploads
