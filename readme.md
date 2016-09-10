@@ -7,7 +7,7 @@ A collection of customized containers for a docker web development stack. Where 
 ## Usage
 
 1. Use a custom [docker-compose.yml](docker-compose.yml) file to do the work for you. Adjust the settings needed for the project.
-2. Copy `.env.dist` to `.env` and change the project id.
+2. Copy `.env.dist` to `.env` and change at least the project id.
 3. Start the container with `docker-compose up -d`.
 
 - Data is available in the containers through a datastore in /app.

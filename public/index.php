@@ -96,13 +96,13 @@ $extensions = [
         <h2>Docs</h2>
         <div style="-webkit-column-count:4;">
             <div>
-                <a href="https://github.com/xtreamwayz/vagrant-devbox/blob/master/readme.md">
-                    DevBox
+                <a href="https://github.com/xtreamwayz/docker-stack/blob/master/readme.md">
+                    docker-stack
                 </a>
             </div>
             <div>
-                <a href="https://github.com/xtreamwayz/vagrant-puppet/blob/master/readme.md">
-                    Puppet
+                <a href="https://docs.docker.com/compose/overview/">
+                    Docker Compose
                 </a>
             </div>
             <div>
