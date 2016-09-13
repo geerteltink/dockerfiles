@@ -18,7 +18,8 @@ services:
       - php
 
   php:
-    image: xtreamwayz/php
+    image: xtreamwayz/php:latest
+    #image: xtreamwayz/php:5.6
     container_name: ${PROJECT_ID}-php
     volumes_from:
       - datastore
