@@ -26,6 +26,9 @@ $ docker-compose up --build
 # Stop containers
 $ docker-compose stop
 
+# Update containers
+$ docker-compose pull
+
 # Start a terminal for <container_name>
 $ docker exec -ti <container_name> /bin/bash   # Ubuntu/Debian based
 $ docker exec -ti <container_name> /bin/sh     # Alpine Linux based
