@@ -10,7 +10,7 @@ A collection of customized containers for a Docker web development stack. Where 
 2. Copy `.env.dist` to `.env` and change at least the project id.
 3. Start the container with `docker-compose up -d`.
 
-- Data is available in the containers through a datastore in /app.
+- Data is available in the containers through the datastore in /app.
 - The app is available at [http://localhost/](http://localhost/).
 - [MailHog](https://github.com/mailhog/MailHog) is used to catch emails and can be accessed at [http://localhost:8025/](http://localhost:8025/).
 
@@ -37,7 +37,7 @@ $ docker ps
 $ docker rm <container_id>
 $ docker rm -f $(docker ps -a -q)
 
-# List all Docker images
+# List all images
 $ docker images
 
 # Remove one / all images
