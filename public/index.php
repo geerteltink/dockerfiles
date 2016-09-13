@@ -1,7 +1,6 @@
 <?php
 
 //use \PDO;
-
 try {
     $dbh = new PDO('mysql:host=db;dbname=docker', 'docker', 'docker');
 } catch (Exception $e) {
@@ -25,7 +24,7 @@ $extensions = [
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Docker Web Development Stack</title>
+    <title>Web Development Stack, powered by Docker Containers</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
@@ -43,7 +42,7 @@ $extensions = [
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="/" class="navbar-brand">Docker Web Development Stack</a>
+                <a href="/" class="navbar-brand">Web Development Stack</a>
             </div>
         </div>
     </header>
@@ -94,10 +93,10 @@ $extensions = [
         </div>
 
         <h2>Docs</h2>
-        <div style="-webkit-column-count:4;">
+        <div style="-webkit-column-count:3;">
             <div>
-                <a href="https://github.com/xtreamwayz/docker-stack/blob/master/readme.md">
-                    docker-stack
+                <a href="https://github.com/xtreamwayz/dckr-stack/blob/master/readme.md">
+                    dckr-stack
                 </a>
             </div>
             <div>

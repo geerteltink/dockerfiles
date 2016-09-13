@@ -1,8 +1,8 @@
-# docker-stack
+# dckr-stack
 
 *nginx, php, mysql, redis, mailhog, livereload*
 
-A collection of customized containers for a docker web development stack. Where possible the containers are build on top of [Alpine Linux](http://alpinelinux.org/) for a small footprint.
+A collection of customized containers for a Docker web development stack. Where possible the containers are build on top of [Alpine Linux](http://alpinelinux.org/) for a small footprint.
 
 ## Usage
 
@@ -37,7 +37,7 @@ $ docker ps
 $ docker rm <container_id>
 $ docker rm -f $(docker ps -a -q)
 
-# List all docker images
+# List all Docker images
 $ docker images
 
 # Remove one / all images
