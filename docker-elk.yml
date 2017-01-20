@@ -10,7 +10,7 @@ services:
     image: busybox
     container_name: ${PROJECT_ID}-datastore
     volumes:
-      - .:/app
+      - ${PROJECT_ROOT}:/app
 
   elasticsearch:
     image: elasticsearch:latest

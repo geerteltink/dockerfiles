@@ -17,11 +17,11 @@ services:
     image: xtreamwayz/wordpress
     container_name: ${PROJECT_ID}-datastore
     volumes:
-      - ./data/mysql:/var/lib/mysql
-      - ./data/wordpress:/app/public
-      - ./plugins:/app/public/wp-content/plugins
-      - ./themes:/app/public/wp-content/themes
-      - ./uploads:/app/public/wp-content/uploads
+      - ${PROJECT_ROOT}/data/mysql:/var/lib/mysql
+      - ${PROJECT_ROOT}/data/wordpress:/app/public
+      - ${PROJECT_ROOT}/plugins:/app/public/wp-content/plugins
+      - ${PROJECT_ROOT}/themes:/app/public/wp-content/themes
+      - ${PROJECT_ROOT}/uploads:/app/public/wp-content/uploads
 
   web:
     image: xtreamwayz/nginx
