@@ -29,12 +29,25 @@ $ docker-compose stop
 # Update containers
 $ docker-compose pull
 
+# Stream logs from all containers to the console
+$ docker-compose logs -t -f
+
 # Start a terminal for <container_name>
 $ docker exec -ti <container_name> /bin/bash   # Ubuntu/Debian based
 $ docker exec -ti <container_name> /bin/sh     # Alpine Linux based
 
 # List containers
 $ docker ps
+```
+
+## Docker maintenance commands
+
+```bash
+# Show used space, similar to the unix tool df
+$ docker system df
+
+# Remove all unused data
+$ docker system prune --force [--all]
 
 # Remove one / all containers
 $ docker rm <container_id>
