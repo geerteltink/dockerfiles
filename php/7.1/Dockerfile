@@ -11,6 +11,8 @@ RUN \
 
 RUN \
   apk add --update \
+    git \
+    ssmtp \
     tini \
   && apk add --virtual .php-build-dependencies \
     autoconf \
@@ -39,7 +41,6 @@ RUN \
   && apk add --virtual .php-runtime-dependencies \
     curl \
     freetype \
-    git \
     icu \
     jpeg \
     libbz2 \
