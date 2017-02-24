@@ -2,13 +2,14 @@
 
 *This is part of the [xtreamwayz/dckr-stack](https://github.com/xtreamwayz/dckr-stack).*
 
-Build with the [packages](http://pkgs.alpinelinux.org/packages?name=php*) from Alpine Linux.
+A collection of customized containers for a Docker web development stack. Where possible the containers are build on top of [Alpine Linux](http://alpinelinux.org/) for a small footprint.
 
-## Tags
+## dckr-stack Containers
 
-- `5` ([5.6/Dockerfile](https://github.com/xtreamwayz/dckr-php/blob/master/5.6/Dockerfile)): build with packages from [Alpine Linux](https://pkgs.alpinelinux.org/packages?name=php5*&branch=edge&arch=x86_64)
-- `7` ([7.x/Dockerfile](https://github.com/xtreamwayz/dckr-php/blob/master/7.x/Dockerfile)): build with packages from [Alpine Linux](https://pkgs.alpinelinux.org/packages?name=php7*&branch=edge&arch=x86_64)
-- `latest` ([latest/Dockerfile](https://github.com/xtreamwayz/dckr-php/blob/master/latest/Dockerfile)): extends [php:7-fpm-alpine](https://hub.docker.com/_/php/)
+- xtreamwayz/nginx: `[latest](https://github.com/xtreamwayz/dckr-stack/blob/master/nginx/Dockerfile)`
+- xtreamwayz/php: `[5.6](https://github.com/xtreamwayz/dckr-stack/blob/master/php/5.6/Dockerfile)` ([Alpine Linux](https://pkgs.alpinelinux.org/packages?name=php5*&branch=edge&arch=x86_64)), `[7.0](https://github.com/xtreamwayz/dckr-stack/blob/master/php/7.0/Dockerfile)` ([Alpine Linux](https://pkgs.alpinelinux.org/packages?name=php7*&branch=edge&arch=x86_64)), `[latest](https://github.com/xtreamwayz/dckr-stack/blob/master/php/7.1/Dockerfile)` ([Source](https://github.com/php/php-src))
+- xtreamwayz/mysql: `[latest](https://github.com/xtreamwayz/dckr-stack/blob/master/mysql/Dockerfile)`
+- xtreamwayz/livereload: `[latest](https://github.com/xtreamwayz/dckr-stack/blob/master/livereload/Dockerfile)`
 
 ## Includes
 

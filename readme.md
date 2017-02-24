@@ -1,8 +1,15 @@
 # dckr-stack
 
-*nginx, php, mysql, redis, mailhog, livereload*
+*This is part of the [xtreamwayz/dckr-stack](https://github.com/xtreamwayz/dckr-stack).*
 
 A collection of customized containers for a Docker web development stack. Where possible the containers are build on top of [Alpine Linux](http://alpinelinux.org/) for a small footprint.
+
+## dckr-stack Containers
+
+- xtreamwayz/nginx: `[latest](https://github.com/xtreamwayz/dckr-stack/blob/master/nginx/Dockerfile)`
+- xtreamwayz/php: `[5.6](https://github.com/xtreamwayz/dckr-stack/blob/master/php/5.6/Dockerfile)` ([Alpine Linux](https://pkgs.alpinelinux.org/packages?name=php5*&branch=edge&arch=x86_64)), `[7.0](https://github.com/xtreamwayz/dckr-stack/blob/master/php/7.0/Dockerfile)` ([Alpine Linux](https://pkgs.alpinelinux.org/packages?name=php7*&branch=edge&arch=x86_64)), `[latest](https://github.com/xtreamwayz/dckr-stack/blob/master/php/7.1/Dockerfile)` ([Source](https://github.com/php/php-src))
+- xtreamwayz/mysql: `[latest](https://github.com/xtreamwayz/dckr-stack/blob/master/mysql/Dockerfile)`
+- xtreamwayz/livereload: `[latest](https://github.com/xtreamwayz/dckr-stack/blob/master/livereload/Dockerfile)`
 
 ## Usage
 
@@ -46,17 +53,18 @@ $ docker ps
 # Show used space, similar to the unix tool df
 $ docker system df
 
-# Remove all unused data
-$ docker system prune --force [--all]
-
-# Remove one / all containers
-$ docker rm <container_id>
-$ docker rm -f $(docker ps -a -q)
+# Remove development junk: unused volumes, networks, exited containers and unused images
+$ docker system prune --force --all
 
 # List all images
 $ docker images
 
-# Remove one / all images
-$ docker rmi <container_id>
-$ docker rmi -f $(docker images -q)
+# Remove dangling images
+$ docker rmi $(docker images -q -f dangling=true)
+
+# Remove exited containers
+$ docker rm $(docker ps -q -f status=exited)
+
+# Remove dangling volumes
+$ docker volume rm $(docker volume ls -q -f dangling=true)
 ```
