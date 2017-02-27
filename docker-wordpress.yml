@@ -13,24 +13,17 @@
 version: "2"
 services:
 
-  datastore:
-    image: xtreamwayz/wordpress
-    container_name: ${PROJECT_ID}-datastore
-    volumes:
-      - ${PROJECT_ROOT}/data/mysql:/var/lib/mysql
-      - ${PROJECT_ROOT}/data/wordpress:/app/public
-      - ${PROJECT_ROOT}/plugins:/app/public/wp-content/plugins
-      - ${PROJECT_ROOT}/themes:/app/public/wp-content/themes
-      - ${PROJECT_ROOT}/uploads:/app/public/wp-content/uploads
-
   web:
     image: xtreamwayz/nginx
     env_file: .env
     container_name: ${PROJECT_ID}-web
     ports:
       - "80:80"
-    volumes_from:
-      - datastore
+    volumes:
+      - ${PROJECT_ROOT}/data/wordpress:/app/public
+      - ${PROJECT_ROOT}/plugins:/app/public/wp-content/plugins
+      - ${PROJECT_ROOT}/themes:/app/public/wp-content/themes
+      - ${PROJECT_ROOT}/uploads:/app/public/wp-content/uploads
     links:
       - php
 
@@ -40,8 +33,11 @@ services:
     container_name: ${PROJECT_ID}-php
     ports:
       - "9000:9000"
-    volumes_from:
-      - datastore
+    volumes:
+      - ${PROJECT_ROOT}/data/wordpress:/app/public
+      - ${PROJECT_ROOT}/plugins:/app/public/wp-content/plugins
+      - ${PROJECT_ROOT}/themes:/app/public/wp-content/themes
+      - ${PROJECT_ROOT}/uploads:/app/public/wp-content/uploads
     links:
       - db
 
@@ -51,16 +47,19 @@ services:
     container_name: ${PROJECT_ID}-db
     ports:
       - "3306:3306"
-    volumes_from:
-      - datastore
+    volumes:
+      - ${PROJECT_ROOT}/data/mysql:/var/lib/mysql
 
   livereload:
     image: xtreamwayz/livereload
     container_name: ${PROJECT_ID}-livereload
     ports:
       - "35729:35729"
-    volumes_from:
-      - datastore
+    volumes:
+      - ${PROJECT_ROOT}/data/wordpress:/app/public
+      - ${PROJECT_ROOT}/plugins:/app/public/wp-content/plugins
+      - ${PROJECT_ROOT}/themes:/app/public/wp-content/themes
+      - ${PROJECT_ROOT}/uploads:/app/public/wp-content/uploads
 
   #mailhog:
   #  image: mailhog/mailhog

@@ -6,12 +6,6 @@
 version: "2"
 services:
 
-  datastore:
-    image: busybox
-    container_name: ${PROJECT_ID}-datastore
-    volumes:
-      - ${PROJECT_ROOT}:/app
-
   elasticsearch:
     image: elasticsearch:latest
     container_name: ${PROJECT_ID}-elasticsearch
@@ -27,11 +21,11 @@ services:
     restart: always
     environment:
       LOGSPOUT: ignore
-    volumes_from:
-      - datastore
     ports:
       - "5000:5000"
       - "5000:5000/udp"
+    volumes:
+      - ${PROJECT_ROOT}:/app
     links:
       - elasticsearch
 

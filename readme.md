@@ -17,7 +17,7 @@ A collection of customized containers for a Docker web development stack. Where 
 2. Copy `.env.dist` to `.env` and change at least the project id.
 3. Start the container with `docker-compose up -d`.
 
-- Data is available in the containers through the datastore in /app.
+- For consistency the source code lives in the `/app` dir.
 - The app is available at [http://localhost/](http://localhost/).
 - [MailHog](https://github.com/mailhog/MailHog) is used to catch emails and can be accessed at [http://localhost:8025/](http://localhost:8025/).
 
