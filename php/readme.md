@@ -24,7 +24,8 @@ Add this to your `docker-compose.yml` file:
 
 ```yaml
 php:
-  image: xtreamwayz/php:latest      # Use for PHP 7.0.x
+  image: xtreamwayz/php:latest      # Use for PHP 7.1.x
+  #image: xtreamwayz/php:7.0        # Use for PHP 7.0.x
   #image: xtreamwayz/php:5.6        # Use for PHP 5.6.x
   container_name: ${PROJECT_ID}-php
   volumes_from:
