@@ -144,7 +144,7 @@ RUN \
   && make install \
 
   # xDebug
-  && XDEBUG_TAG="XDEBUG_2_5_0" \
+  && XDEBUG_TAG="XDEBUG_2_5_1" \
   && git clone -o ${XDEBUG_TAG} --depth 1 https://github.com/xdebug/xdebug.git /tmp/xdebug \
   && cd /tmp/xdebug \
   && phpize \
