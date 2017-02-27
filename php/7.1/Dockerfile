@@ -177,5 +177,7 @@ RUN \
 COPY php-fpm.conf /etc/php/php-fpm.conf
 COPY php.ini /etc/php/php.ini
 
+WORKDIR /app
+
 ENTRYPOINT ["tini", "--"]
 CMD ["php-fpm"]
