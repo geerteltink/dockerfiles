@@ -31,8 +31,6 @@ services:
     #volumes:
     #  - ${PROJECT_ROOT}/resources/mysql-dump:/docker-entrypoint-initdb.d  # Import .sql files
     #  - ${PROJECT_ROOT}/data/mysql-data:/var/lib/mysql                    # persistent database
-    volumes_from:
-      - datastore
 
   redis:
     image: redis:3-alpine
