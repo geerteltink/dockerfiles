@@ -1,12 +1,12 @@
-FROM alpine:edge
+FROM alpine:latest
 
 LABEL repository.hub="xtreamwayz/dckr-php:7.1" \
       repository.url="https://github.com/xtreamwayz/dckr-php"
 
 ARG PHP_INI_DIR=/etc/php
-
 RUN \
-  addgroup -S www-data \
+  mkdir -p $PHP_INI_DIR/conf.d
+  && addgroup -S www-data \
   && adduser -D -S -h /var/cache/www-data -s /sbin/nologin -G www-data www-data
 
 RUN \
@@ -175,7 +175,7 @@ RUN \
   && composer global require hirak/prestissimo --no-ansi
 
 COPY php-fpm.conf /etc/php/php-fpm.conf
-COPY php.ini /etc/php/php.ini
+COPY php.ini /etc/php/conf.d/php.ini
 
 WORKDIR /app
 
