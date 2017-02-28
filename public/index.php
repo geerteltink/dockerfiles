@@ -7,16 +7,17 @@ try {
     $dbError = $e->getMessage();
 }
 
-$extensions = [
-    'curl',
-    'gd',
-    'intl',
-    'mcrypt',
-    'pdo_mysql',
-    'pdo_sqlite',
-    'xdebug',
-    'zend opcache'
-];
+$extensions = get_loaded_extensions();
+$extensions[] = 'gd';
+$extensions[] = 'intl';
+$extensions[] = 'mbstring';
+$extensions[] = 'openssl';
+$extensions[] = 'pdo_mysql';
+$extensions[] = 'pdo_sqlite';
+$extensions[] = 'xdebug';
+$extensions[] = 'zend opcache';
+$extensions = array_unique($extensions);
+sort($extensions, SORT_NATURAL | SORT_FLAG_CASE);
 
 ?>
 <!doctype html>
@@ -26,11 +27,8 @@ $extensions = [
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Web Development Stack, powered by Docker Containers</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-    <!-- Place favicon.ico in the root directory -->
-
-    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/united/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/united/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
     <header role="navigation" class="navbar navbar-default navbar-static-top">
