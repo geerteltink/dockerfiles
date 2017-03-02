@@ -59,12 +59,12 @@ $ docker system prune --force --all
 # List all images
 $ docker images
 
-# Remove dangling images
-$ docker rmi $(docker images -q -f dangling=true)
+# Remove dangling images:
+$ docker images -qf dangling=true --no-trunc | grep '<none>' | awk '{ print $3 }' | xargs -r docker rmi
 
-# Remove exited containers
-$ docker rm $(docker ps -q -f status=exited)
+# Remove exited containers:
+$ docker ps -aq --filter status=dead --filter status=exited | xargs -r docker rm -v
 
-# Remove dangling volumes
-$ docker volume rm $(docker volume ls -q -f dangling=true)
+# Remove dangling volumes:
+$ docker volume ls -qf dangling=true | xargs -r docker volume rm
 ```
