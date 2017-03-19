@@ -1,11 +1,8 @@
-FROM alpine:edge
+FROM alpine:latest
 
-RUN apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing add \
-        alpine-sdk \
-        python \
+RUN apk add --update \
         nodejs \
     && npm install -g livereload \
-    && apk del alpine-sdk python \
     && rm -rf \
 		/var/cache/apk/* \
    		/usr/share/doc \
