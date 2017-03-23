@@ -1,12 +1,12 @@
-FROM alpine:edge
+FROM alpine:latest
 
 MAINTAINER Geert Eltink <@xtreamwayz>
 LABEL repository.hub="xtreamwayz/dckr-php:7" \
-      repository.url="https://github.com/xtreamwayz/dckr-php"
+      repository.url="https://github.com/xtreamwayz/dckr-stack/tree/master/php/7.0"
 
 RUN \
   # Install packages
-  apk --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing add \
+  apk add --no-cache --update \
     curl \
     git \
     ssmtp \

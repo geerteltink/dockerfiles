@@ -1,7 +1,7 @@
-FROM alpine:edge
+FROM alpine:latest
 
-LABEL repository.hub="xtreamwayz/dckr-php:7.1" \
-      repository.url="https://github.com/xtreamwayz/dckr-php"
+LABEL repository.hub="xtreamwayz/dckr-php:latest" \
+      repository.url="https://github.com/xtreamwayz/dckr-stack/tree/master/php/7.1"
 
 ARG PHP_INI_DIR=/etc/php
 
