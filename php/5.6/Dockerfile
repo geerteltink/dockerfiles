@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:edge
 
 MAINTAINER Geert Eltink <@xtreamwayz>
 LABEL repository.hub="xtreamwayz/dckr-php:5" \
