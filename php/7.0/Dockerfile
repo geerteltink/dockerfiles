@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM alpine:latest
 
 MAINTAINER Geert Eltink <@xtreamwayz>
 LABEL repository.hub="xtreamwayz/php:7" \
@@ -6,7 +6,7 @@ LABEL repository.hub="xtreamwayz/php:7" \
 
 RUN \
   # Install packages
-  apk add --no-cache --update \
+  apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
     curl \
     git \
     ssmtp \
