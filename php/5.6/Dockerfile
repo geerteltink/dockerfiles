@@ -1,7 +1,7 @@
 FROM alpine:edge
 
 MAINTAINER Geert Eltink <@xtreamwayz>
-LABEL repository.hub="xtreamwayz/dckr-php:5" \
+LABEL repository.hub="xtreamwayz/php:5" \
       repository.url="https://github.com/xtreamwayz/dckr-stack/tree/master/php/5.6"
 
 RUN \

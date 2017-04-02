@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-LABEL repository.hub="xtreamwayz/dckr-php:latest" \
+LABEL repository.hub="xtreamwayz/php:latest" \
       repository.url="https://github.com/xtreamwayz/dckr-stack/tree/master/php/7.1"
 
 ARG PHP_INI_DIR=/etc/php
