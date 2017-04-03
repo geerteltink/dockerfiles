@@ -47,10 +47,7 @@ RUN \
 
   # Add PHP user
   && addgroup -g 1000 -S www-data \
-  && adduser -u 1000 -D -S -G www-data www-data \
-
-  # Make sure we can call php as usual
-  && ln -s /usr/bin/php7 /usr/bin/php
+  && adduser -u 1000 -D -S -G www-data www-data
 
 COPY php.ini /etc/php7/conf.d/50-setting.ini
 COPY php-fpm.conf /etc/php7/php-fpm.conf
