@@ -179,5 +179,5 @@ COPY php.ini /etc/php/conf.d/php.ini
 
 WORKDIR /app
 
-ENTRYPOINT ["tini", "--"]
+ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["php-fpm"]
