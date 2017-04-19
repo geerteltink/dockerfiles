@@ -144,7 +144,7 @@ RUN \
   && make install \
 
   # xDebug
-  && XDEBUG_TAG="XDEBUG_2_5_1" \
+  && XDEBUG_TAG="XDEBUG_2_5_3" \
   && git clone -o ${XDEBUG_TAG} --depth 1 https://github.com/xdebug/xdebug.git /tmp/xdebug \
   && cd /tmp/xdebug \
   && phpize \
@@ -153,7 +153,7 @@ RUN \
   && make install \
 
   # Redis
-  && REDIS_TAG="3.1.1" \
+  && REDIS_TAG="3.1.2" \
   && git clone -o ${REDIS_TAG} --depth 1 https://github.com/phpredis/phpredis.git /tmp/redis \
   && cd /tmp/redis \
   && phpize \
