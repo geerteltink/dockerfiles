@@ -21,6 +21,17 @@ A collection of customized containers for a Docker web development stack. Where 
 - The app is available at [http://localhost/](http://localhost/).
 - [MailHog](https://github.com/mailhog/MailHog) is used to catch emails and can be accessed at [http://localhost:8025/](http://localhost:8025/).
 
+## Fixing "Permission Denied" Issues
+
+Use setfacl to set permission on the host 
+
+    sudo setfacl -Rm g:82:rwX,d:g:82:rwX /home/<username>/projects
+
+Or create a new group with ID 82 on the host and add yourself to this group.
+
+    sudo groupadd -r -g 82 alpine-www-data
+    sudo usermod -a -G alpine-www-data $(id -un)
+
 ## Docker commands
 
 ```bash
