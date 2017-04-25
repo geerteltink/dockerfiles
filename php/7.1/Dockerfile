@@ -6,15 +6,16 @@ LABEL repository.hub="xtreamwayz/php:latest" \
 ARG PHP_INI_DIR=/etc/php
 
 RUN \
-  addgroup -S www-data \
-  && adduser -D -S -h /var/cache/www-data -s /sbin/nologin -G www-data www-data
-
-RUN \
   apk add --update \
     git \
     ssmtp \
     tini \
-  && apk add --virtual .php-build-dependencies \
+
+  && addgroup -g 82 -S www-data \
+  && adduser -u 82 -S -D -h /var/cache/www-data -s /sbin/nologin -G www-data www-data
+
+RUN \
+  apk add --virtual .php-build-dependencies \
     autoconf \
     binutils \
     bison \
