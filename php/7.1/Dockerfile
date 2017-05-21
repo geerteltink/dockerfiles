@@ -4,6 +4,10 @@ LABEL repository.hub="xtreamwayz/php:latest" \
       repository.url="https://github.com/xtreamwayz/dckr-stack/tree/master/php/7.1"
 
 ARG PHP_INI_DIR=/etc/php
+ARG PHP_BRANCH=PHP-7.1
+ARG LIBICONV_VERSION=1.15
+ARG XDEBUG_TAG=XDEBUG_2_5_4
+ARG REDIS_TAG=3.1.2
 
 RUN \
   apk add --update \
@@ -64,7 +68,6 @@ RUN \
   && export MAKEFLAGS="-j $(expr $(getconf _NPROCESSORS_ONLN) \+ 1)" \
 
   # Proper iconv
-  && LIBICONV_VERSION="1.15" \
   && LIBICONV_SOURCE="https://ftp.gnu.org/pub/gnu/libiconv/libiconv-${LIBICONV_VERSION}.tar.gz" \
   && curl -fSL --connect-timeout 30 ${LIBICONV_SOURCE} | tar xz -C /tmp \
   && cd /tmp/libiconv-${LIBICONV_VERSION} \
@@ -75,7 +78,6 @@ RUN \
   && make install \
 
   # PHP
-  && PHP_BRANCH="PHP-7.1" \
   && git clone -b ${PHP_BRANCH} --depth 1 https://github.com/php/php-src.git /tmp/php-src \
   && cd /tmp/php-src \
 
@@ -145,7 +147,6 @@ RUN \
   && make install \
 
   # xDebug
-  && XDEBUG_TAG="XDEBUG_2_5_3" \
   && git clone -o ${XDEBUG_TAG} --depth 1 https://github.com/xdebug/xdebug.git /tmp/xdebug \
   && cd /tmp/xdebug \
   && phpize \
@@ -154,7 +155,6 @@ RUN \
   && make install \
 
   # Redis
-  && REDIS_TAG="3.1.2" \
   && git clone -o ${REDIS_TAG} --depth 1 https://github.com/phpredis/phpredis.git /tmp/redis \
   && cd /tmp/redis \
   && phpize \
