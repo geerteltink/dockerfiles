@@ -5,11 +5,17 @@ LABEL repository.hub="xtreamwayz/php:5" \
       repository.url="https://github.com/xtreamwayz/dckr-stack/tree/master/php/5.6"
 
 RUN \
-  # Install packages
-  apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
+  apk add --update \
     curl \
     git \
     ssmtp \
+
+  && addgroup -g 82 -S www-data \
+  && adduser -u 82 -S -D -h /var/cache/www-data -s /sbin/nologin -G www-data www-data
+
+RUN \
+  # Install packages
+  apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
     php5 \
     php5-common \
     php5-fpm \
@@ -37,20 +43,16 @@ RUN \
     php5-zlib \
 
   # Cleanup
-  && rm -rf \
-    /var/cache/apk/* \
-    /usr/share/doc \
-    /usr/share/man \
-
-  # Add PHP user
-  && addgroup -g 1000 -S www-data \
-  && adduser -u 1000 -D -S -G www-data www-data
+  && rm -rf /var/cache/apk/* /var/tmp/* /usr/share/doc /usr/share/man /tmp/*
 
 COPY php.ini /etc/php5/conf.d/50-setting.ini
 COPY php-fpm.conf /etc/php5/php-fpm.conf
 COPY ssmtp.conf /etc/ssmtp/ssmtp.conf
 
 RUN \
+  # Create a symlink
+  ln -sf /usr/bin/php5 /usr/bin/php
+
   # Display some debug output
   php --version && php -m \
 

@@ -5,11 +5,17 @@ LABEL repository.hub="xtreamwayz/php:7" \
       repository.url="https://github.com/xtreamwayz/dckr-stack/tree/master/php/7.0"
 
 RUN \
-  # Install packages
-  apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
+  apk add --update \
     curl \
     git \
     ssmtp \
+
+  && addgroup -g 82 -S www-data \
+  && adduser -u 82 -S -D -h /var/cache/www-data -s /sbin/nologin -G www-data www-data
+
+RUN \
+  # Install packages
+  apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
     php7 \
     php7-common \
     php7-fpm \
@@ -39,14 +45,7 @@ RUN \
     php7-zlib \
 
   # Cleanup
-  && rm -rf \
-    /var/cache/apk/* \
-    /usr/share/doc \
-    /usr/share/man \
-
-  # Add PHP user
-  && addgroup -g 1000 -S www-data \
-  && adduser -u 1000 -D -S -G www-data www-data
+  && rm -rf /var/cache/apk/* /var/tmp/* /usr/share/doc /usr/share/man /tmp/*
 
 COPY php.ini /etc/php7/conf.d/50-setting.ini
 COPY php-fpm.conf /etc/php7/php-fpm.conf
