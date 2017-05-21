@@ -31,7 +31,6 @@ RUN \
     php5-pdo_sqlite \
     php5-phar \
     php5-sockets \
-    php5-xdebug \
     php5-xml \
     php5-xmlreader \
     php5-zip \
