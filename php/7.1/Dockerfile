@@ -172,7 +172,8 @@ RUN \
   # Install composer
   && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
 
-  # Add composer parallel install plugin
+  # Use https and add composer parallel install plugin
+  && composer config --global repo.packagist composer https://packagist.org \
   && composer global require hirak/prestissimo --no-ansi
 
 COPY php-fpm.conf /etc/php/php-fpm.conf
