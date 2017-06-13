@@ -1,8 +1,4 @@
-FROM alpine:edge
-
-MAINTAINER Geert Eltink <@xtreamwayz>
-LABEL repository.hub="xtreamwayz/php:7" \
-      repository.url="https://github.com/xtreamwayz/dckr-stack/tree/master/php/7.0"
+FROM alexmasterov/alpine-php:7.0
 
 RUN \
   apk add --update \
@@ -10,45 +6,11 @@ RUN \
     git \
     ssmtp \
 
-  && addgroup -g 82 -S www-data \
-  && adduser -u 82 -S -D -h /var/cache/www-data -s /sbin/nologin -G www-data www-data
-
-RUN \
-  # Install packages
-  apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
-    php7 \
-    php7-common \
-    php7-fpm \
-    php7-bcmath \
-    php7-curl \
-    php7-ctype \
-    php7-dom \
-    php7-gd \
-    php7-iconv \
-    php7-intl \
-    php7-json \
-    php7-mbstring \
-    php7-mysqli \
-    php7-opcache \
-    php7-openssl \
-    php7-pcntl \
-    php7-pdo \
-    php7-pdo_mysql \
-    php7-pdo_sqlite \
-    php7-phar \
-    php7-session \
-    php7-sockets \
-    php7-xdebug \
-    php7-xml \
-    php7-xmlreader \
-    php7-zip \
-    php7-zlib \
-
   # Cleanup
   && rm -rf /var/cache/apk/* /var/tmp/* /usr/share/doc /usr/share/man /tmp/*
 
-COPY php.ini /etc/php7/conf.d/50-setting.ini
-COPY php-fpm.conf /etc/php7/php-fpm.conf
+COPY php-fpm.conf /etc/php/php-fpm.conf
+COPY php.ini /etc/php/conf.d/php.ini
 COPY ssmtp.conf /etc/ssmtp/ssmtp.conf
 
 RUN \
