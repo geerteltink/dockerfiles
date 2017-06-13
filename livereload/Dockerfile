@@ -2,10 +2,12 @@ FROM alpine:latest
 
 RUN apk add --update \
         nodejs \
+        nodejs-npm \
+
     && npm install -g livereload \
     && rm -rf \
-		/var/cache/apk/* \
-   		/usr/share/doc \
+        /var/cache/apk/* \
+        /usr/share/doc \
         /usr/share/man
 
 # Display versions
