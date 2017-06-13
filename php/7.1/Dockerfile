@@ -165,20 +165,23 @@ RUN \
 
   # Removing build dependencies, clean temporary files
   && apk del .php-build-dependencies \
-  && rm -rf /var/cache/apk/* /var/tmp/* /tmp/* \
+  && rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
 
+COPY php-fpm.conf /etc/php/php-fpm.conf
+COPY php.ini /etc/php/conf.d/php.ini
+
+RUN \
   # Display some debug output
-  && php --version && php -m \
+  php --version && php -m \
 
   # Install composer
   && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
 
-  # Use https and add composer parallel install plugin
+  # Use https
   && composer config --global repo.packagist composer https://packagist.org \
-  && composer global require hirak/prestissimo --no-ansi
 
-COPY php-fpm.conf /etc/php/php-fpm.conf
-COPY php.ini /etc/php/conf.d/php.ini
+  # Add composer parallel install plugin
+  && composer global require hirak/prestissimo --no-ansi
 
 WORKDIR /app
 
