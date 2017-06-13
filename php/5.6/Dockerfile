@@ -54,7 +54,7 @@ RUN \
   ln -sf /usr/bin/php5 /usr/bin/php \
 
   # Display some debug output
-  php --version && php -m \
+  && php --version && php -m \
 
   # Install composer
   && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
