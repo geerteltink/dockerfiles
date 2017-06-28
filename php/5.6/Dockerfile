@@ -43,7 +43,7 @@ RUN \
     php5-zlib \
 
   # Cleanup
-  && rm -rf /var/cache/apk/* /var/tmp/* /usr/share/doc /usr/share/man /tmp/*
+  && rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
 
 COPY php.ini /etc/php5/conf.d/50-setting.ini
 COPY php-fpm.conf /etc/php5/php-fpm.conf
@@ -62,6 +62,9 @@ RUN \
   # Use https and add composer parallel install plugin
   && composer config --global repo.packagist composer https://packagist.org \
   && composer global require hirak/prestissimo --no-ansi
+
+  # Cleanup
+  && rm -rf /root/.composer/cache/*
 
 WORKDIR /app
 EXPOSE 9000

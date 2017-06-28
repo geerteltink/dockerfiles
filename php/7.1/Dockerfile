@@ -25,7 +25,10 @@ RUN \
 
   # Use https and add composer parallel install plugin
   && composer config --global repo.packagist composer https://packagist.org \
-  && composer global require hirak/prestissimo --no-ansi
+  && composer global require hirak/prestissimo --no-ansi \
+
+  # Cleanup
+  && rm -rf /var/cache/apk/* /var/tmp/* /tmp/* /root/.composer/cache/*
 
 WORKDIR /app
 EXPOSE 9000
