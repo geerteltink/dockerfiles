@@ -27,4 +27,5 @@ RUN \
 WORKDIR /app
 EXPOSE 9000
 
-CMD ["php-fpm7", "-F"]
+ENTRYPOINT ["tini", "--"]
+CMD ["php-fpm"]
