@@ -169,6 +169,7 @@ RUN \
 
 COPY php-fpm.conf /etc/php/php-fpm.conf
 COPY php.ini /etc/php/conf.d/php.ini
+COPY ssmtp.conf /etc/ssmtp/ssmtp.conf
 
 RUN \
   # Display some debug output
