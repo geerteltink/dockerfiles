@@ -69,4 +69,4 @@ RUN \
 WORKDIR /app
 EXPOSE 9000
 
-CMD ["php5-fpm", "-F"]
+CMD ["php-fpm", "-F"]
