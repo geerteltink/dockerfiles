@@ -23,14 +23,16 @@ A collection of customized containers for a Docker web development stack. Where 
 
 ## Fixing "Permission Denied" Issues
 
-Use setfacl to set permission on the host 
+Use setfacl to set permission on the host
 
     sudo setfacl -Rm g:82:rwX,d:g:82:rwX /home/<username>/projects
 
-Or create a new group with ID 82 on the host and add yourself to this group.
+Setup permissions for docker so the files can be accessed and deleted.
 
-    sudo groupadd -r -g 82 alpine-www-data
-    sudo usermod -a -G alpine-www-data $(id -un)
+    # Preserve permissions for new files and folders
+    sudo setfacl -dR -m u:28:rwx -m u:82:rwx -m u:33:rwx -m u:999:rwx -m u:$(whoami):rwx data
+    # Set permissions
+    sudo setfacl -R -m u:28:rwx -m u:82:rwx -m u:33:rwx -m u:999:rwx -m u:$(whoami):rwx data
 
 ## Docker commands
 
