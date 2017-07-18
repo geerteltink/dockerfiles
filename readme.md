@@ -28,8 +28,10 @@ Use setfacl to set permission on the host
     sudo setfacl -Rm g:82:rwX,d:g:82:rwX /home/<username>/projects
 
 Setup permissions for docker so the files can be accessed and deleted.
+The trick is to use the uid's from the docker processes.
+*www-data/nginx: 82 - docker: 999 - mysql: 28*
 
-    # Preserve permissions for new files and folders
+    # Preserve default permissions for new files and folders
     sudo setfacl -dR -m u:28:rwx -m u:82:rwx -m u:33:rwx -m u:999:rwx -m u:$(whoami):rwx data
     # Set permissions
     sudo setfacl -R -m u:28:rwx -m u:82:rwx -m u:33:rwx -m u:999:rwx -m u:$(whoami):rwx data
