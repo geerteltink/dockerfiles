@@ -5,7 +5,7 @@ LABEL repository.hub="xtreamwayz/php:latest" \
 
 ARG PHP_INI_DIR=/etc/php
 ARG PHP_BRANCH=PHP-7.1
-ARG XDEBUG_TAG=XDEBUG_2_5_5
+ARG XDEBUG_BRANCH=master
 ARG REDIS_TAG=3.1.2
 
 RUN \
@@ -21,7 +21,6 @@ RUN \
   apk add --virtual .php-build-dependencies \
     autoconf \
     binutils \
-    bison \
     bzip2-dev \
     curl-dev \
     file \
@@ -38,6 +37,7 @@ RUN \
     libxml2-dev \
     libxslt-dev \
     make \
+    pcre-dev \
     postgresql-dev \
     re2c \
     readline-dev \
@@ -56,6 +56,7 @@ RUN \
     libwebp \
     libxml2 \
     libxslt \
+    pcre \
     readline \
     zlib \
 
@@ -146,7 +147,7 @@ RUN \
   && make install \
 
   # xDebug
-  && git clone -o ${XDEBUG_TAG} --depth 1 https://github.com/xdebug/xdebug.git /tmp/xdebug \
+  && git clone -o ${XDEBUG_BRANCH} --depth 1 https://github.com/xdebug/xdebug.git /tmp/xdebug \
   && cd /tmp/xdebug \
   && phpize \
   && ./configure \
