@@ -21,6 +21,7 @@ RUN \
   apk add --virtual .php-build-dependencies \
     autoconf \
     binutils \
+    bison \
     bzip2-dev \
     curl-dev \
     file \
