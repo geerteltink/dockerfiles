@@ -1,10 +1,10 @@
 FROM alpine:latest
 
-LABEL repository.hub="xtreamwayz/php:7.1" \
-      repository.url="https://github.com/xtreamwayz/dckr-stack/tree/master/php/7.1"
+LABEL repository.hub="xtreamwayz/php:7.2" \
+      repository.url="https://github.com/xtreamwayz/dckr-stack/tree/master/php/7.2"
 
 ARG PHP_INI_DIR=/etc/php
-ARG PHP_BRANCH=PHP-7.1
+ARG PHP_BRANCH=PHP-7.2
 ARG XDEBUG_BRANCH=master
 ARG REDIS_TAG=3.1.2
 
