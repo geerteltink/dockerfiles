@@ -122,7 +122,7 @@ RUN \
     --enable-xmlwriter \
     --enable-zip \
     --with-bz2=/usr \
-    --with-curl \
+    --with-curl=/usr \
     --with-gd \
       --with-freetype-dir=/usr \
       --with-jpeg-dir=/usr \
@@ -133,15 +133,15 @@ RUN \
     --with-mhash \
     --with-mysqli \
     --with-openssl \
-    --with-pcre-regex \
+    --with-pcre-regex=/usr \
       --with-pcre-jit \
     --with-pdo-mysql=mysqlnd \
     --with-pdo-pgsql \
     --with-pdo-sqlite \
     --with-pgsql \
-    --with-readline \
+    --with-readline=/usr \
     --with-xmlrpc \
-    --with-xsl \
+    --with-xsl=/usr \
   && make \
   && make install \
 
