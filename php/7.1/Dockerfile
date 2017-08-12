@@ -31,7 +31,6 @@ RUN \
     icu-dev \
     jpeg-dev \
     libevent-dev \
-    libmcrypt-dev \
     libpng-dev \
     libtool \
     libwebp-dev \
@@ -51,7 +50,6 @@ RUN \
     libbz2 \
     libevent \
     libltdl \
-    libmcrypt \
     libpng \
     libpq \
     libwebp \
