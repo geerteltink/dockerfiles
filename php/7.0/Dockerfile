@@ -5,6 +5,7 @@ RUN \
     curl \
     git \
     ssmtp \
+    openssh-client \
 
   # Cleanup
   && rm -rf /var/cache/apk/* /var/tmp/* /usr/share/doc /usr/share/man /tmp/*

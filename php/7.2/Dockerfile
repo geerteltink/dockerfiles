@@ -13,6 +13,7 @@ RUN \
     git \
     ssmtp \
     tini \
+    openssh-client \
 
   && addgroup -g 82 -S www-data \
   && adduser -u 82 -S -D -h /var/cache/www-data -s /sbin/nologin -G www-data www-data
