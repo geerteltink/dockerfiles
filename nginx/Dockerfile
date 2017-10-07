@@ -1,6 +1,12 @@
 FROM nginx:stable-alpine
 
-RUN mkdir -p /opt/media/images
+RUN \
+  apk add --update \
+    nginx-mod-http-image-filter \
+    nginx-mod-http-upload-progress \
+
+  && mkdir -p /opt/media/images \
+  && mkdir -p /tmp/nginx-image-cache/
 
 # config
 COPY default.conf /etc/nginx/conf.d/default.conf
