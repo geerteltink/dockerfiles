@@ -8,19 +8,12 @@ services:
       - "80:80"
     volumes:
       - ${PROJECT_ROOT}:/app
-    links:
-      - php
 
   php:
-    image: xtreamwayz/php:latest
-    #image: xtreamwayz/php:5.6
+    image: xtreamwayz/php:7.2
     container_name: ${PROJECT_ID}-php
     volumes:
       - ${PROJECT_ROOT}:/app
-    links:
-      - db
-      - redis
-      - mailhog
 
   db:
     image: xtreamwayz/mysql
