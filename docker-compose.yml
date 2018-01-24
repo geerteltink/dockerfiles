@@ -3,37 +3,38 @@ services:
 
   web:
     image: xtreamwayz/nginx
-    container_name: ${PROJECT_ID}-web
+    container_name: PROJECT_ID-web
     ports:
       - "80:80"
     volumes:
-      - ${PROJECT_ROOT}:/app
+      - ./public:/app/public
 
   php:
     image: xtreamwayz/php:7.2
-    container_name: ${PROJECT_ID}-php
+    container_name: PROJECT_ID-php
     volumes:
-      - ${PROJECT_ROOT}:/app
+      - .:/app
 
   db:
     image: xtreamwayz/mysql
-    container_name: ${PROJECT_ID}-db
+    container_name: PROJECT_ID-db
     ports:
       - "3306:3306"
-    env_file: .env
+    environment:
+      - MYSQL_DATABASE=docker
+      - MYSQL_PASSWORD=docker
+      - MYSQL_ROOT_PASSWORD=docker
+      - MYSQL_USER=docker
     #volumes:
-    #  - ${PROJECT_ROOT}/resources/mysql-dump:/docker-entrypoint-initdb.d  # Import .sql files
-    #  - ${PROJECT_ROOT}/data/mysql-data:/var/lib/mysql                    # persistent database
+    #  - ./data/mysql:/var/lib/mysql                          # persistent database
+    #  -./resources/docker-initdb:/docker-entrypoint-initdb.d # Import .sql files
 
   redis:
     image: redis:3-alpine
-    container_name: ${PROJECT_ID}-redis
-    ports:
-      - "6379:6379"
+    container_name: PROJECT_ID-redis
 
   mailhog:
     image: mailhog/mailhog
-    container_name: ${PROJECT_ID}-mailhog
+    container_name: PROJECT_ID-mailhog
     ports:
-      - "1025:1025"
       - "8025:8025"
