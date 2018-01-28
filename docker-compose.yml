@@ -7,7 +7,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./public:/app/public
+      - ./public:/app/public:ro,cached
 
   php:
     image: xtreamwayz/php:7.2
@@ -26,13 +26,14 @@ services:
       - MYSQL_ROOT_PASSWORD=docker
       - MYSQL_USER=docker
     #volumes:
-    #  - ./data/mysql:/var/lib/mysql                          # persistent database
-    #  -./resources/docker-initdb:/docker-entrypoint-initdb.d # Import .sql files
+    #  - ./data/mysql:/var/lib/mysql:rw,delegated
+    #  - ./resources/docker-initdb:/docker-entrypoint-initdb.d:ro,cached
 
   redis:
     image: redis:3-alpine
     container_name: PROJECT_ID-redis
 
+  # Access mailhog at http://localhost:8025/
   mailhog:
     image: mailhog/mailhog
     container_name: PROJECT_ID-mailhog

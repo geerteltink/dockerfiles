@@ -7,7 +7,7 @@ A collection of customized containers for a Docker web development stack. Where 
 ## dckr-stack containers
 
 - **xtreamwayz/nginx:** [latest](https://github.com/xtreamwayz/dckr-stack/blob/master/nginx/Dockerfile)
-- **xtreamwayz/php:** [5.6](https://github.com/xtreamwayz/dckr-stack/blob/master/php/5.6/Dockerfile) ([Alpine Linux](https://pkgs.alpinelinux.org/packages?name=php5*&branch=edge&arch=x86_64)), [7.1](https://github.com/xtreamwayz/dckr-stack/blob/master/php/7.1/Dockerfile) ([7.1.x-dev Source](https://github.com/php/php-src/tree/PHP-7.1))
+- **xtreamwayz/php:** [5.6](https://github.com/xtreamwayz/dckr-stack/blob/master/php/5.6/Dockerfile) ([Alpine Linux](https://pkgs.alpinelinux.org/packages?name=php5*&branch=edge&arch=x86_64)), [7.1](https://github.com/xtreamwayz/dckr-stack/blob/master/php/7.1/Dockerfile) ([7.1.x-dev Source](https://github.com/php/php-src/tree/PHP-7.1)), [7.2](https://github.com/xtreamwayz/dckr-stack/blob/master/php/7.2/Dockerfile) ([7.2.x-dev Source](https://github.com/php/php-src/tree/PHP-7.2))
 - **xtreamwayz/mysql:** [latest](https://github.com/xtreamwayz/dckr-stack/blob/master/mysql/Dockerfile)
 
 ## Includes
@@ -22,17 +22,11 @@ A collection of customized containers for a Docker web development stack. Where 
 Add this to your `docker-compose.yml` file:
 
 ```yaml
-php:
-  image: xtreamwayz/php:7.1
-  #image: xtreamwayz/php:7.0
-  #image: xtreamwayz/php:5.6
-  container_name: ${PROJECT_ID}-php
-  volumes_from:
-    - datastore
-  links:
-    - db        # Optional
-    - redis     # Optional
-    - mailhog   # Optional
+  php:
+    image: xtreamwayz/php:7.2
+    container_name: PROJECT_ID-php
+    volumes:
+      - .:/app
 ```
 
 ## Xdebug

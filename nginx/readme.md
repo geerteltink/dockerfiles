@@ -7,7 +7,7 @@ A collection of customized containers for a Docker web development stack. Where 
 ## dckr-stack containers
 
 - **xtreamwayz/nginx:** [latest](https://github.com/xtreamwayz/dckr-stack/blob/master/nginx/Dockerfile)
-- **xtreamwayz/php:** [5.6](https://github.com/xtreamwayz/dckr-stack/blob/master/php/5.6/Dockerfile) ([Alpine Linux](https://pkgs.alpinelinux.org/packages?name=php5*&branch=edge&arch=x86_64)), [7.1](https://github.com/xtreamwayz/dckr-stack/blob/master/php/7.1/Dockerfile) ([7.1.x-dev Source](https://github.com/php/php-src/tree/PHP-7.1))
+- **xtreamwayz/php:** [5.6](https://github.com/xtreamwayz/dckr-stack/blob/master/php/5.6/Dockerfile) ([Alpine Linux](https://pkgs.alpinelinux.org/packages?name=php5*&branch=edge&arch=x86_64)), [7.1](https://github.com/xtreamwayz/dckr-stack/blob/master/php/7.1/Dockerfile) ([7.1.x-dev Source](https://github.com/php/php-src/tree/PHP-7.1)), [7.2](https://github.com/xtreamwayz/dckr-stack/blob/master/php/7.2/Dockerfile) ([7.2.x-dev Source](https://github.com/php/php-src/tree/PHP-7.2))
 - **xtreamwayz/mysql:** [latest](https://github.com/xtreamwayz/dckr-stack/blob/master/mysql/Dockerfile)
 
 ## Usage
@@ -17,15 +17,13 @@ The documents are served from `.:/app/public` and can be accessed at http://127.
 Add this to your `docker-compose.yml` file:
 
 ```yaml
-web:
-  image: xtreamwayz/nginx
-  container_name: ${PROJECT_ID}-web
-  ports:
-    - "80:80"
-  volumes_from:
-    - datastore
-  links:
-    - php
+  web:
+    image: xtreamwayz/nginx
+    container_name: PROJECT_ID-web
+    ports:
+      - "80:80"
+    volumes:
+      - ./public:/app/public:ro,cached
 ```
 
 ## CLI commands
