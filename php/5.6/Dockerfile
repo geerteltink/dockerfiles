@@ -56,9 +56,9 @@ RUN \
   # Use https
   && composer config --global repo.packagist composer https://packagist.org \
   # Add composer parallel install plugin
-  && composer global require hirak/prestissimo --no-ansi \
-  # Removing build dependencies, clean temporary files
-  && rm -rf /var/cache/apk/* /var/tmp/* /tmp/* /root/.composer/cache/* \
+  && composer global require hirak/prestissimo \
+  # Cleanup cache
+  && rm -rf /var/tmp/* /tmp/* /root/.composer/cache/* \
   # Display some debug output
   && php --version && php --ini && php -m
 
