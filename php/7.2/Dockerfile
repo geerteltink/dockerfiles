@@ -57,8 +57,10 @@ RUN \
   # Use multi-threaded 'make' by default
   && export MAKEFLAGS="-j $(expr $(getconf _NPROCESSORS_ONLN) \+ 1)" \
   # PHP
-  && git clone -b ${PHP_BRANCH} --depth 1 https://github.com/php/php-src.git /tmp/php-src \
-  && cd /tmp/php-src \
+  && PHP_VERSION=`git ls-remote --tags https://github.com/php/php-src.git | grep "7\.2\."| grep -v {| grep -v alpha| grep -v beta| grep -v RC| sort -n -t. -k3 -k4| tail -n1 | sed -e 's/^.*refs\/tags\/php-//g'` \
+  && PHP_SOURCE="https://secure.php.net/get/php-${PHP_VERSION}.tar.xz/from/this/mirror" \
+  && curl -fSL --connect-timeout 30 ${PHP_SOURCE} | tar xJ -C /tmp \
+  && cd /tmp/php-${PHP_VERSION} \
   && ./buildconf --force \
   && ./configure \
     --prefix=/usr \
