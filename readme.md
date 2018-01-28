@@ -35,6 +35,10 @@ The trick is to use the uid's from the docker processes.
     # Set permissions
     sudo setfacl -R -m u:28:rwx -m u:82:rwx -m u:33:rwx -m u:999:rwx -m u:$(whoami):rwx data
 
+## Xdebug
+
+Xdebug is configured so it doesn't start automatically. You need to enable the debug listener in PhpStorm first and enable a session cookie in your [Chrome](https://chrome.google.com/webstore/detail/xdebug-helper/eadndfjplgieldjbigjakmdgkmoaaaoc) or [Firefox](https://chrome.google.com/extensions/detail/eadndfjplgieldjbigjakmdgkmoaaaoc) browser.
+
 ## Docker commands
 
 ```bash

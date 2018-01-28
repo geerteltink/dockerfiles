@@ -23,9 +23,9 @@ Add this to your `docker-compose.yml` file:
 
 ```yaml
 php:
-  image: xtreamwayz/php:latest      # Use for PHP 7.1.x
-  #image: xtreamwayz/php:7.0        # Use for PHP 7.0.x
-  #image: xtreamwayz/php:5.6        # Use for PHP 5.6.x
+  image: xtreamwayz/php:7.1
+  #image: xtreamwayz/php:7.0
+  #image: xtreamwayz/php:5.6
   container_name: ${PROJECT_ID}-php
   volumes_from:
     - datastore
@@ -34,6 +34,10 @@ php:
     - redis     # Optional
     - mailhog   # Optional
 ```
+
+## Xdebug
+
+Xdebug is configured so it doesn't start automatically. You need to enable the debug listener in PhpStorm first and enable a session cookie in your [Chrome](https://chrome.google.com/webstore/detail/xdebug-helper/eadndfjplgieldjbigjakmdgkmoaaaoc) or [Firefox](https://chrome.google.com/extensions/detail/eadndfjplgieldjbigjakmdgkmoaaaoc) browser.
 
 ## CLI commands
 
