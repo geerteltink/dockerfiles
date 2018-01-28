@@ -10,6 +10,7 @@ ARG REDIS_TAG=3.1.6
 
 RUN \
   apk add --update \
+    curl \
     git \
     ssmtp \
     tini \
@@ -23,7 +24,6 @@ RUN \
     binutils \
     bison \
     bzip2-dev \
-    curl \
     curl-dev \
     file \
     freetype-dev \
