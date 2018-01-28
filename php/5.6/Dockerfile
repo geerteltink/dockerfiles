@@ -52,7 +52,7 @@ RUN \
   # Create a symlink
   ln -sf /usr/bin/php5 /usr/bin/php \
   # Install composer
-  curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+  && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
   # Use https
   && composer config --global repo.packagist composer https://packagist.org \
   # Add composer parallel install plugin
