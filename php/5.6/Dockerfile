@@ -51,17 +51,17 @@ COPY ssmtp.conf /etc/ssmtp/ssmtp.conf
 RUN \
   # Create a symlink
   ln -sf /usr/bin/php5 /usr/bin/php \
-  # Display some debug output
-  && php --version && php --ini && php -m \
   # Install composer
-  && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-  # Use https and add composer parallel install plugin
+  curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+  # Use https
   && composer config --global repo.packagist composer https://packagist.org \
+  # Add composer parallel install plugin
   && composer global require hirak/prestissimo --no-ansi \
-  # Cleanup
-  && rm -rf /root/.composer/cache/*
+  # Removing build dependencies, clean temporary files
+  && rm -rf /var/cache/apk/* /var/tmp/* /tmp/* /root/.composer/cache/* \
+  # Display some debug output
+  && php --version && php --ini && php -m
 
 WORKDIR /app
-EXPOSE 9000
 
 CMD ["php-fpm5", "-F"]

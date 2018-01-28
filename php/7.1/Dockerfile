@@ -23,6 +23,7 @@ RUN \
     binutils \
     bison \
     bzip2-dev \
+    curl \
     curl-dev \
     file \
     freetype-dev \
@@ -42,22 +43,6 @@ RUN \
     re2c \
     readline-dev \
     sqlite-dev \
-  && apk add --virtual .php-runtime-dependencies \
-    curl \
-    freetype \
-    icu \
-    jpeg \
-    libbz2 \
-    libevent \
-    libltdl \
-    libpng \
-    libpq \
-    libwebp \
-    libxml2 \
-    libxslt \
-    pcre \
-    readline \
-    zlib \
   # Proper iconv
   && apk add --no-cache --virtual .iconv-runtime-dependencies \
     --repository https://dl-3.alpinelinux.org/alpine/edge/testing/ \
@@ -116,6 +101,7 @@ RUN \
     --enable-xmlreader \
     --enable-xmlwriter \
     --enable-zip \
+      --with-pcre-dir=/usr \
     --with-bz2=/usr \
     --with-curl=/usr \
     --with-gd \
@@ -123,11 +109,13 @@ RUN \
       --with-jpeg-dir=/usr \
       --with-png-dir=/usr \
       --with-webp-dir=/usr \
+      --with-xpm-dir=no \
       --with-zlib-dir=/usr \
     --with-iconv=/usr \
     --with-mhash \
     --with-mysqli \
     --with-openssl \
+      --with-system-ciphers \
     --with-pcre-regex=/usr \
       --with-pcre-jit \
     --with-pdo-mysql=mysqlnd \
@@ -139,6 +127,14 @@ RUN \
     --with-xsl=/usr \
   && make \
   && make install \
+  && runtimeDeps="$( \
+      scanelf --needed --nobanner --recursive /usr/sbin/php-fpm \
+      | awk '{ gsub(/,/, "\nso:", $2); print "so:" $2 }' \
+      | sort -u \
+      | xargs -r apk info --installed \
+      | sort -u \
+    )" \
+  && apk add --virtual .php-runtime-dependencies ${runtimeDeps} \
   # xDebug
   && git clone -o ${XDEBUG_BRANCH} --depth 1 https://github.com/xdebug/xdebug.git /tmp/xdebug \
   && cd /tmp/xdebug \
@@ -152,10 +148,7 @@ RUN \
   && phpize \
   && ./configure \
   && make \
-  && make install \
-  # Removing build dependencies, clean temporary files
-  && apk del .php-build-dependencies \
-  && rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
+  && make install
 
 COPY php-fpm.conf /etc/php/php-fpm.conf
 COPY php.ini /etc/php/conf.d/php.ini
@@ -163,16 +156,19 @@ COPY xdebug.ini /etc/php/conf.d/xdebug.ini
 COPY ssmtp.conf /etc/ssmtp/ssmtp.conf
 
 RUN \
-  # Display some debug output
-  php --version && php --ini && php -m \
   # Install composer
-  && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+  curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
   # Use https
   && composer config --global repo.packagist composer https://packagist.org \
   # Add composer parallel install plugin
-  && composer global require hirak/prestissimo --no-ansi
+  && composer global require hirak/prestissimo --no-ansi \
+  # Removing build dependencies, clean temporary files
+  && apk del .php-build-dependencies \
+  && rm -rf /var/cache/apk/* /var/tmp/* /tmp/* /root/.composer/cache/* \
+  # Display some debug output
+  && php --version && php --ini && php -m
 
 WORKDIR /app
 
-ENTRYPOINT ["/sbin/tini", "--"]
+ENTRYPOINT ["tini", "--"]
 CMD ["php-fpm"]
