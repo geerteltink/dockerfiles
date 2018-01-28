@@ -14,7 +14,6 @@ RUN \
     ssmtp \
     tini \
     openssh-client \
-
   && addgroup -g 82 -S www-data \
   && adduser -u 82 -S -D -h /var/cache/www-data -s /sbin/nologin -G www-data www-data
 
@@ -59,27 +58,22 @@ RUN \
     pcre \
     readline \
     zlib \
-
   # Proper iconv
   && apk add --no-cache --virtual .iconv-runtime-dependencies \
     --repository https://dl-3.alpinelinux.org/alpine/edge/testing/ \
     gnu-libiconv-dev \
-
   # Replace binary and headers
   && (mv /usr/bin/gnu-iconv /usr/bin/iconv; \
       mv /usr/include/gnu-libiconv/*.h /usr/include; rm -rf /usr/include/gnu-libiconv) \
-
   # See: https://github.com/docker-library/php/issues/272
   && export CFLAGS="-O2 -march=native -fstack-protector-strong -fpic -fpie" \
   && export CPPFLAGS=${CFLAGS} \
   && export LDFLAGS="-Wl,-O2 -Wl,--hash-style=both -pie" \
   # Use multi-threaded 'make' by default
   && export MAKEFLAGS="-j $(expr $(getconf _NPROCESSORS_ONLN) \+ 1)" \
-
   # PHP
   && git clone -b ${PHP_BRANCH} --depth 1 https://github.com/php/php-src.git /tmp/php-src \
   && cd /tmp/php-src \
-
   && ./buildconf --force \
   && ./configure \
     --prefix=/usr \
@@ -145,7 +139,6 @@ RUN \
     --with-xsl=/usr \
   && make \
   && make install \
-
   # xDebug
   && git clone -o ${XDEBUG_BRANCH} --depth 1 https://github.com/xdebug/xdebug.git /tmp/xdebug \
   && cd /tmp/xdebug \
@@ -153,7 +146,6 @@ RUN \
   && ./configure \
   && make \
   && make install \
-
   # Redis
   && git clone -o ${REDIS_TAG} --depth 1 https://github.com/phpredis/phpredis.git /tmp/redis \
   && cd /tmp/redis \
@@ -161,7 +153,6 @@ RUN \
   && ./configure \
   && make \
   && make install \
-
   # Removing build dependencies, clean temporary files
   && apk del .php-build-dependencies \
   && rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
@@ -174,13 +165,10 @@ COPY ssmtp.conf /etc/ssmtp/ssmtp.conf
 RUN \
   # Display some debug output
   php --version && php --ini && php -m \
-
   # Install composer
   && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-
   # Use https
   && composer config --global repo.packagist composer https://packagist.org \
-
   # Add composer parallel install plugin
   && composer global require hirak/prestissimo --no-ansi
 

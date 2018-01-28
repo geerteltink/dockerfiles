@@ -1,6 +1,5 @@
 FROM alpine:edge
 
-MAINTAINER Geert Eltink <@xtreamwayz>
 LABEL repository.hub="xtreamwayz/php:5" \
       repository.url="https://github.com/xtreamwayz/dckr-stack/tree/master/php/5.6"
 
@@ -10,7 +9,6 @@ RUN \
     git \
     ssmtp \
     openssh-client \
-
   && addgroup -g 82 -S www-data \
   && adduser -u 82 -S -D -h /var/cache/www-data -s /sbin/nologin -G www-data www-data
 
@@ -42,7 +40,6 @@ RUN \
     php5-xmlreader \
     php5-zip \
     php5-zlib \
-
   # Cleanup
   && rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
 
@@ -54,17 +51,13 @@ COPY ssmtp.conf /etc/ssmtp/ssmtp.conf
 RUN \
   # Create a symlink
   ln -sf /usr/bin/php5 /usr/bin/php \
-
   # Display some debug output
   && php --version && php --ini && php -m \
-
   # Install composer
   && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-
   # Use https and add composer parallel install plugin
   && composer config --global repo.packagist composer https://packagist.org \
   && composer global require hirak/prestissimo --no-ansi \
-
   # Cleanup
   && rm -rf /root/.composer/cache/*
 
