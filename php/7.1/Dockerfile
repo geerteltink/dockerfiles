@@ -6,7 +6,7 @@ LABEL repository.hub="xtreamwayz/php:7.1" \
 ARG PHP_INI_DIR=/etc/php
 ARG PHP_BRANCH=PHP-7.1
 ARG XDEBUG_BRANCH=master
-ARG REDIS_TAG=3.1.3
+ARG REDIS_TAG=3.1.6
 
 RUN \
   apk add --update \
