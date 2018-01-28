@@ -46,8 +46,9 @@ RUN \
   # Cleanup
   && rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
 
-COPY php.ini /etc/php5/conf.d/50-setting.ini
-COPY php-fpm.conf /etc/php5/php-fpm.conf
+COPY php-fpm.conf /etc/php/php-fpm.conf
+COPY php.ini /etc/php/conf.d/php.ini
+COPY xdebug.ini /etc/php/conf.d/xdebug.ini
 COPY ssmtp.conf /etc/ssmtp/ssmtp.conf
 
 RUN \
