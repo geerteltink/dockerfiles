@@ -173,7 +173,7 @@ COPY ssmtp.conf /etc/ssmtp/ssmtp.conf
 
 RUN \
   # Display some debug output
-  php --version && php -m \
+  php --version && php --ini && php -m \
 
   # Install composer
   && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
