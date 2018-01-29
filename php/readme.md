@@ -26,7 +26,8 @@ Add this to your `docker-compose.yml` file:
     image: xtreamwayz/php:7.2
     container_name: PROJECT_ID-php
     volumes:
-      - .:/app
+      - .:/app:ro,cached
+      - ./data:/app/data:rw,delegated
 ```
 
 ## Xdebug
