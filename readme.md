@@ -43,7 +43,7 @@ Xdebug is configured so it doesn't start automatically. You need to enable the d
 
 ```bash
 # Start containers
-$ docker-compose up
+$ docker-compose up -d
 
 # Start and force rebuilding the containers
 $ docker-compose up --build
@@ -60,9 +60,6 @@ $ docker-compose logs -t -f
 # Start a terminal for <container_name>
 $ docker exec -ti <container_name> /bin/bash   # Ubuntu/Debian based
 $ docker exec -ti <container_name> /bin/sh     # Alpine Linux based
-
-# List containers
-$ docker ps
 ```
 
 ## Docker maintenance commands
@@ -76,4 +73,12 @@ $ docker system prune --force --all
 
 # List all images
 $ docker images
+
+# List containers
+$ docker ps
+```
+
+```powershell
+# Force stop all containers in PowerShell
+> docker ps -a -q | ForEach { docker stop $_ }
 ```
