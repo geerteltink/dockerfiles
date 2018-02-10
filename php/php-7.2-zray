@@ -1,0 +1,20 @@
+FROM xtreamwayz/php:7.2
+
+ENV ZRAY_REPO http://repos.zend.com/zend-server/early-access/ZRay-Homestead
+ENV ZRAY_VERSION zray-standalone-php72
+
+WORKDIR /opt
+
+RUN \
+  apk add --update \
+    wget \
+    libc6-compat \
+    openssl \
+  && curl -L ${ZRAY_REPO}/${ZRAY_VERSION}.tar.gz | tar -xzf - -C /opt
+
+RUN \
+  ln -sf /opt/zray/lib/zray.so `php -r "echo ini_get('extension_dir');"`/zray.so \
+  && ln -sf /opt/zray/zray.ini /etc/php/conf.d/zray.ini \
+  && php -m
+
+WORKDIR /app
