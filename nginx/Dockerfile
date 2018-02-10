@@ -4,10 +4,8 @@ RUN \
   mkdir -p /opt/media/images \
   && mkdir -p /tmp/nginx-image-cache/
 
-# config
-COPY default.conf /etc/nginx/conf.d/default.conf
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY favicon.ico /opt/media/images/favicon.ico
-COPY apple-touch-icon.png /opt/media/images/apple-touch-icon.png
+# Config
+COPY config/ /etc/nginx/
+COPY assets/ /opt/media/images/
 
 RUN nginx -V
