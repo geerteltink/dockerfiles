@@ -19,66 +19,93 @@ A collection of customized containers for a Docker web development stack. Where 
 - For consistency the source code lives in the `/app` dir.
 - The app is available at [http://localhost/](http://localhost/).
 - [MailHog](https://github.com/mailhog/MailHog) is used to catch emails and can be accessed at [http://localhost:8025/](http://localhost:8025/).
+- [SPX - Simple Profiling eXtension](https://github.com/NoiseByNorthwest/php-spx) can be accessed via its web UI control panel at [http://localhost/_spx?SPX_KEY=dev](http://localhost/_spx?SPX_KEY=dev).
 
 ## Fixing "Permission Denied" Issues
 
 Use setfacl to set permission on the host
 
-    sudo setfacl -Rm g:82:rwX,d:g:82:rwX /home/<username>/projects
+```bash
+sudo setfacl -Rm g:82:rwX,d:g:82:rwX /home/<username>/projects
+```
 
 Setup permissions for docker so the files can be accessed and deleted.
 The trick is to use the uid's from the docker processes.
 *www-data/nginx: 82 - docker: 999 - mysql: 28*
 
-    # Preserve default permissions for new files and folders
-    sudo setfacl -dR -m u:28:rwx -m u:82:rwx -m u:33:rwx -m u:999:rwx -m u:$(whoami):rwx data
-    # Set permissions
-    sudo setfacl -R -m u:28:rwx -m u:82:rwx -m u:33:rwx -m u:999:rwx -m u:$(whoami):rwx data
+```bash
+# Preserve default permissions for new files and folders
+sudo setfacl -dR -m u:28:rwx -m u:82:rwx -m u:33:rwx -m u:999:rwx -m u:$(whoami):rwx data
+# Set permissions
+sudo setfacl -R -m u:28:rwx -m u:82:rwx -m u:33:rwx -m u:999:rwx -m u:$(whoami):rwx data
+```
 
 ## Xdebug
 
 Xdebug is configured so it doesn't start automatically. You need to enable the debug listener in PhpStorm first and enable a session cookie in your [Chrome](https://chrome.google.com/webstore/detail/xdebug-helper/eadndfjplgieldjbigjakmdgkmoaaaoc) or [Firefox](https://chrome.google.com/extensions/detail/eadndfjplgieldjbigjakmdgkmoaaaoc) browser.
 
-## Docker commands
+## Building manually
 
 ```bash
-# Start containers
+docker build -f Dockerfile -t dev .
+```
+
+## Docker commands
+
+Start containers
+```bash
 $ docker-compose up -d
+```
 
-# Start and force rebuilding the containers
+Start and force rebuilding the containers
+```bash
 $ docker-compose up --build
+```
 
-# Stop containers
+Stop containers
+```bash
 $ docker-compose stop
+```
 
-# Update containers
+Update containers
+```bash
 $ docker-compose pull
+```
 
-# Stream logs from all containers to the console
+Stream logs from all containers to the console
+```bash
 $ docker-compose logs -t -f
+```
 
-# Start a terminal for <container_name>
+Start a terminal for <container_name>
+```bash
 $ docker exec -ti <container_name> /bin/bash   # Ubuntu/Debian based
 $ docker exec -ti <container_name> /bin/sh     # Alpine Linux based
 ```
 
 ## Docker maintenance commands
 
+Show used space, similar to the unix tool df
 ```bash
-# Show used space, similar to the unix tool df
 $ docker system df
+```
 
-# Remove development junk: unused volumes, networks, exited containers and unused images
+Remove development junk: unused volumes, networks, exited containers and unused images
+```bash
 $ docker system prune --force --all
+```
 
-# List all images
+List all images
+```bash
 $ docker images
+```
 
-# List containers
+List containers
+```bash
 $ docker ps
 ```
 
+Force stop all containers in PowerShell
 ```powershell
-# Force stop all containers in PowerShell
 > docker ps -a -q | ForEach { docker stop $_ }
 ```

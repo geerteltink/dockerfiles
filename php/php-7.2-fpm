@@ -151,6 +151,13 @@ RUN \
   && ./configure \
   && make \
   && make install \
+  # SPX
+  && git clone https://github.com/NoiseByNorthwest/php-spx.git /tmp/spx \
+  && cd /tmp/spx \
+  && phpize \
+  && ./configure \
+  && make \
+  && make install \
   # Removing build dependencies, clean temporary files
   && apk del .php-build-dependencies \
   && rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
@@ -160,6 +167,7 @@ COPY config/fpm/pool.d/www.conf /etc/php/pool.d/www.conf
 COPY config/opcache.ini /etc/php/conf.d/opcache.ini
 COPY config/php.ini /etc/php/conf.d/php.ini
 COPY config/redis.ini /etc/php/conf.d/redis.ini
+COPY config/spx.ini /etc/php/conf.d/spx.ini
 COPY config/xdebug.ini /etc/php/conf.d/xdebug.ini
 COPY config/ssmtp/ssmtp.conf /etc/ssmtp/ssmtp.conf
 
