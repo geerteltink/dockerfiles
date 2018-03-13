@@ -152,7 +152,7 @@ RUN \
   && make \
   && make install \
   # SPX
-  git clone https://github.com/NoiseByNorthwest/php-spx.git /tmp/spx \
+  && git clone https://github.com/NoiseByNorthwest/php-spx.git /tmp/spx \
   && cd /tmp/spx \
   && phpize \
   && ./configure \
