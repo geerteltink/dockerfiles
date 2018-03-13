@@ -152,12 +152,13 @@ RUN \
   && make \
   && make install \
   # SPX
-  && git clone https://github.com/NoiseByNorthwest/php-spx.git /tmp/spx \
+  git clone https://github.com/NoiseByNorthwest/php-spx.git /tmp/spx \
   && cd /tmp/spx \
   && phpize \
   && ./configure \
   && make \
   && make install \
+  && chown -R www-data:www-data /usr/share/misc/php-spx/assets/web-ui \
   # Removing build dependencies, clean temporary files
   && apk del .php-build-dependencies \
   && rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
