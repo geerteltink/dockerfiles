@@ -19,7 +19,7 @@ A collection of customized containers for a Docker web development stack. Where 
 - For consistency the source code lives in the `/app` dir.
 - The app is available at [http://localhost/](http://localhost/).
 - [MailHog](https://github.com/mailhog/MailHog) is used to catch emails and can be accessed at [http://localhost:8025/](http://localhost:8025/).
-- [SPX - Simple Profiling eXtension](https://github.com/NoiseByNorthwest/php-spx) can be accessed via its web UI control panel at [http://localhost/_spx?SPX_KEY=dev](http://localhost/_spx?SPX_KEY=dev).
+- [SPX - Simple Profiling eXtension](https://github.com/NoiseByNorthwest/php-spx) can be accessed via its web UI control panel at [http://localhost/_spx/?SPX_KEY=dev](http://localhost/_spx/?SPX_KEY=dev).
 
 ## Fixing "Permission Denied" Issues
 

@@ -16,6 +16,7 @@ A collection of customized containers for a Docker web development stack. Where 
 - Extensions: bcmath, curl, ctype, dom, gd, iconv, intl, json, mbstring, mcrypt, mysql *(5.6 only)*, mysqli, opcache, openssl, pcntl, pdo, pdo_mysql, pdo_sqlite, phar, session, sockets, xdebug, xml, xmlreader, redis, zip, zlib
 - [composer](https://getcomposer.org/doc/)
 - [ssmtp](http://linux.die.net/man/8/ssmtp) to catch php mail() and forward to [MailHog](https://github.com/mailhog/MailHog)
+- [SPX - Simple Profiling eXtension](https://github.com/NoiseByNorthwest/php-spx) can be accessed via its web UI control panel at [http://localhost/_spx/?SPX_KEY=dev](http://localhost/_spx/?SPX_KEY=dev).
 
 ## Usage
 
