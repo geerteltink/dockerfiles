@@ -12,6 +12,7 @@ RUN \
   apk add --update \
     curl \
     git \
+    make \
     ssmtp \
     tini \
     openssh-client \
@@ -37,7 +38,6 @@ RUN \
     libwebp-dev \
     libxml2-dev \
     libxslt-dev \
-    make \
     pcre-dev \
     postgresql-dev \
     re2c \
