@@ -85,6 +85,11 @@ $ docker exec -ti <container_name> /bin/sh     # Alpine Linux based
 
 ## Docker maintenance commands
 
+Stats for running containers
+```bash
+$ docker stats -a
+```
+
 Show used space, similar to the unix tool df
 ```bash
 $ docker system df
