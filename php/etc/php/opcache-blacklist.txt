@@ -1,0 +1,4 @@
+/app/config
+/app/res
+/app/src
+/app/test

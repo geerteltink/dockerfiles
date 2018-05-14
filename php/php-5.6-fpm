@@ -44,11 +44,7 @@ RUN \
   # Cleanup
   && rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
 
-COPY config/fpm/php-fpm.conf /etc/php5/php-fpm.conf
-COPY config/fpm/pool.d/www.conf /etc/php5/pool.d/www.conf
-COPY config/opcache.ini /etc/php5/conf.d/opcache.ini
-COPY config/php.ini /etc/php5/conf.d/php.ini
-COPY config/ssmtp/ssmtp.conf /etc/ssmtp/ssmtp.conf
+COPY etc /etc
 
 RUN \
   # Create a symlink
