@@ -48,7 +48,7 @@ COPY etc /etc
 
 RUN \
   # Install composer
-  && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+  curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
   # Use https
   && composer config --global repo.packagist composer https://packagist.org \
   # Add composer parallel install plugin
