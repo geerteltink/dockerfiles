@@ -1,4 +1,6 @@
+/app/application
 /app/config
+/app/resources
 /app/res
 /app/src
 /app/test
