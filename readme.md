@@ -79,6 +79,10 @@ $ docker-compose logs -t -f
 
 Start a terminal for <container_name>
 ```bash
+# With docker-compose
+$ docker-compose run --rm php /bin/bash   # Ubuntu/Debian based
+$ docker-compose run --rm php /bin/sh     # Alpine Linux based
+# With docker
 $ docker exec -ti <container_name> /bin/bash   # Ubuntu/Debian based
 $ docker exec -ti <container_name> /bin/sh     # Alpine Linux based
 ```
