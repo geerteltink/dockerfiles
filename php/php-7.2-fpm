@@ -6,7 +6,7 @@ LABEL repository.hub="xtreamwayz/php:7.2" \
 ARG PHP_INI_DIR=/etc/php
 ARG PHP_BRANCH=PHP-7.2
 ARG XDEBUG_BRANCH=master
-ARG REDIS_TAG=3.1.6
+ARG REDIS_TAG=4.1.1
 
 RUN \
   apk add --update \
@@ -21,6 +21,7 @@ RUN \
 
 RUN \
   apk add --virtual .php-build-dependencies \
+    argon2-dev \
     autoconf \
     binutils \
     bison \
@@ -34,10 +35,13 @@ RUN \
     jpeg-dev \
     libevent-dev \
     libpng-dev \
+    libsodium-dev \
     libtool \
     libwebp-dev \
     libxml2-dev \
     libxslt-dev \
+    libzip-dev \
+    make \
     pcre-dev \
     postgresql-dev \
     re2c \
@@ -93,6 +97,7 @@ RUN \
     --enable-opcache \
       --enable-huge-code-pages \
       --enable-opcache-file \
+    --enable-option-checking=fatal \
     --enable-pcntl \
     --enable-phar \
     --enable-session \
@@ -102,8 +107,6 @@ RUN \
     --enable-xml \
     --enable-xmlreader \
     --enable-xmlwriter \
-    --enable-zip \
-      --with-pcre-dir=/usr \
     --with-bz2=/usr \
     --with-curl=/usr \
     --with-gd \
@@ -114,10 +117,12 @@ RUN \
       --with-xpm-dir=no \
       --with-zlib-dir=/usr \
     --with-iconv=/usr \
+    --with-libzip=/usr \
     --with-mhash \
     --with-mysqli \
     --with-openssl \
       --with-system-ciphers \
+    --with-password-argon2 \
     --with-pcre-regex=/usr \
       --with-pcre-jit \
     --with-pdo-mysql=mysqlnd \
@@ -125,6 +130,7 @@ RUN \
     --with-pdo-sqlite \
     --with-pgsql \
     --with-readline=/usr \
+    --with-sodium=/usr \
     --with-xmlrpc \
     --with-xsl=/usr \
   && make \
