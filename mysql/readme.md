@@ -7,7 +7,7 @@ A collection of customized containers for a Docker web development stack. Where 
 ## dckr-stack containers
 
 - **xtreamwayz/nginx:** [latest](https://github.com/xtreamwayz/dckr-stack/blob/master/nginx/Dockerfile)
-- **xtreamwayz/php:** [5.6](https://github.com/xtreamwayz/dckr-stack/blob/master/php/5.6/Dockerfile) ([Alpine Linux](https://pkgs.alpinelinux.org/packages?name=php5*&branch=edge&arch=x86_64)), [7.1](https://github.com/xtreamwayz/dckr-stack/blob/master/php/7.1/Dockerfile) ([7.1.x Source](https://github.com/php/php-src/tree/PHP-7.1)), [7.2](https://github.com/xtreamwayz/dckr-stack/blob/master/php/7.2/Dockerfile) ([7.2.x Source](https://github.com/php/php-src/tree/PHP-7.2))
+- **xtreamwayz/php:** [5.6](https://github.com/xtreamwayz/dckr-stack/blob/master/php/php-5.6-fpm), [7.1-fpm](https://github.com/xtreamwayz/dckr-stack/blob/master/php/php-7.1-fpm), [7.2-fpm](https://github.com/xtreamwayz/dckr-stack/blob/master/php/php-7.2-fpm), [7.3-fpm](https://github.com/xtreamwayz/dckr-stack/blob/master/php/php-7.3-fpm), [7.3-swoole](https://github.com/xtreamwayz/dckr-stack/blob/master/php/php-7.3-swoole)
 - **xtreamwayz/mysql:** [latest](https://github.com/xtreamwayz/dckr-stack/blob/master/mysql/Dockerfile)
 
 ## Usage
