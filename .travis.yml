@@ -1,0 +1,20 @@
+language: bash
+services: docker
+
+env:
+  - PACKAGE=php IMAGE=php-7.3-fpm
+
+before_script:
+  - env | sort
+  - cd "$PACKAGE"
+
+script:
+  - |
+    (
+      set -Eeuo pipefail
+      set -x
+      docker build -t "$IMAGE" -f "$IMAGE" .
+      docker run -ti --rm "$IMAGE" php --version
+      docker run -ti --rm "$IMAGE" php --ini
+      docker run -ti --rm "$IMAGE" php -m
+    )
