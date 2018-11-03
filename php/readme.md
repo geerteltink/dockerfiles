@@ -1,5 +1,7 @@
 # PHP-FPM Docker Container
 
+[![Build Status](https://travis-ci.org/xtreamwayz/dckr-stack.svg?branch=master)](https://travis-ci.org/xtreamwayz/dckr-stack)
+
 *This is part of the [xtreamwayz/dckr-stack](https://github.com/xtreamwayz/dckr-stack).*
 
 A collection of customized containers for a Docker web development stack. Where possible the containers are build on top of [Alpine Linux](http://alpinelinux.org/) for a small footprint.
