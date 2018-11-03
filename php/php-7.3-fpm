@@ -1,6 +1,6 @@
-FROM php:7.3-rc-alpine
+FROM php:7.3-rc-fpm-alpine
 
-LABEL repository.hub="xtreamwayz/php:7.3" \
+LABEL repository.hub="xtreamwayz/php:7.3-fpm" \
       repository.url="https://github.com/xtreamwayz/dckr-stack/tree/master/php"
 
 ARG REDIS_TAG=4.1.1
@@ -94,10 +94,6 @@ RUN set -xe \
     && mkdir /app
 
 COPY etc /usr/local/etc
-
-RUN set -xe \
-    && : "---------- Debug output ----------" \
-    && php --version && php --ini && php -m
 
 WORKDIR /app
 

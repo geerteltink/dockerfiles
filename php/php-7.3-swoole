@@ -9,7 +9,6 @@ RUN set -xe \
     && : "---------- Persistent dependencies ----------" \
     && apk add --no-cache --virtual .persistent-dependencies \
         ssmtp \
-        tini \
     && : "---------- Build dependencies ----------" \
     && apk add --virtual .build-dependencies \
         autoconf \
@@ -83,11 +82,4 @@ RUN set -xe \
 
 COPY etc /usr/local/etc
 
-RUN set -xe \
-    && : "---------- Debug output ----------" \
-    && php --version && php --ini && php -m
-
 WORKDIR /app
-
-ENTRYPOINT ["tini", "--"]
-CMD ["php-fpm"]
