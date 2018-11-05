@@ -1,6 +1,6 @@
 # PHP-FPM Docker Container
 
-[![Build Status](https://travis-ci.org/xtreamwayz/dckr-stack.svg?branch=master)](https://travis-ci.org/xtreamwayz/dckr-stack)
+[![Build Status](https://travis-ci.com/xtreamwayz/dckr-stack.svg?branch=master)](https://travis-ci.org/xtreamwayz/dckr-stack)
 
 *This is part of the [xtreamwayz/dckr-stack](https://github.com/xtreamwayz/dckr-stack).*
 
