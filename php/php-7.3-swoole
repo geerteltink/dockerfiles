@@ -3,7 +3,7 @@ FROM php:7.3-rc-cli-alpine
 LABEL repository.hub="xtreamwayz/php:7.3-swoole" \
       repository.url="https://github.com/xtreamwayz/dckr-stack/tree/master/php"
 
-ARG REDIS_TAG=4.1.1
+ARG REDIS_TAG=4.3.0
 
 RUN set -xe \
     && : "---------- Persistent dependencies ----------" \
