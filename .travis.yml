@@ -24,3 +24,13 @@ script:
 
 after_script:
   - docker images
+
+before_deploy:
+  - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
+
+deploy:
+  provider: script
+  script: docker push "xtreamwayz/$PACKAGE:$VERSION"
+  on:
+    branch: master
+    
