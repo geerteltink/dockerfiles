@@ -1,4 +1,4 @@
-FROM php:7.3-rc-cli-alpine
+FROM php:7.3-cli-alpine
 
 LABEL repository.hub="xtreamwayz/php:7.3-swoole" \
       repository.url="https://github.com/xtreamwayz/dckr-stack/tree/master/php"
