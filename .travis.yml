@@ -2,9 +2,9 @@ language: bash
 services: docker
 
 env:
-  - PACKAGE=php VERSION=php-7.1-fpm
-  - PACKAGE=php VERSION=php-7.2-fpm
-  - PACKAGE=php VERSION=php-7.3-fpm
+  - PACKAGE=php VERSION=7.1-fpm
+  - PACKAGE=php VERSION=7.2-fpm
+  - PACKAGE=php VERSION=7.3-fpm
 
 before_script:
   - env | sort
