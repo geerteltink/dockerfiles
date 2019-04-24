@@ -17,7 +17,7 @@ script:
     (
       set -Eeuo pipefail
       set -x
-      docker build --pull --file "$VERSION" --tag "xtreamwayz/$PACKAGE:$VERSION" --cache-from "xtreamwayz/$PACKAGE:$VERSION" .
+      docker build --pull --file "$VERSION.dockerfile" --tag "xtreamwayz/$PACKAGE:$VERSION" --cache-from "xtreamwayz/$PACKAGE:$VERSION" .
     )
 
 after_script:
