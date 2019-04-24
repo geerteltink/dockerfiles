@@ -5,6 +5,8 @@ env:
   - PACKAGE=php VERSION=7.1-fpm
   - PACKAGE=php VERSION=7.2-fpm
   - PACKAGE=php VERSION=7.3-fpm
+  - PACKAGE=mysql VERSION=latest
+  - PACKAGE=nginx VERSION=latest
 
 before_script:
   - env | sort
@@ -16,9 +18,6 @@ script:
       set -Eeuo pipefail
       set -x
       docker build --pull --file "$VERSION" --tag "xtreamwayz/$PACKAGE:$VERSION" --cache-from "xtreamwayz/$PACKAGE:$VERSION" .
-      docker run -ti --rm "xtreamwayz/$PACKAGE:$VERSION" php --version
-      docker run -ti --rm "xtreamwayz/$PACKAGE:$VERSION" php --ini
-      docker run -ti --rm "xtreamwayz/$PACKAGE:$VERSION" php -m
     )
 
 after_script:
