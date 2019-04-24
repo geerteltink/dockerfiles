@@ -16,19 +16,11 @@ script:
     (
       set -Eeuo pipefail
       set -x
-      docker build --quiet -t "$VERSION" -f "$VERSION" .
-      docker run -ti --rm "$VERSION" php --version
-      docker run -ti --rm "$VERSION" php --ini
-      docker run -ti --rm "$VERSION" php -m
-      docker run --rm "$VERSION" php -m | grep bcmath
-      docker run --rm "$VERSION" php -m | grep exif
-      docker run --rm "$VERSION" php -m | grep gd
-      docker run --rm "$VERSION" php -m | grep intl
-      docker run --rm "$VERSION" php -m | grep mbstring
-      docker run --rm "$VERSION" php -m | grep mysqli
-      docker run --rm "$VERSION" php -m | grep mysqlnd
-      docker run --rm "$VERSION" php -m | grep pcntl
-      docker run --rm "$VERSION" php -m | grep pdo_mysql
-      docker run --rm "$VERSION" php -m | grep redis
-      docker run --rm "$VERSION" php -m | grep OPcache
+      docker build --pull --file "$VERSION" --tag "xtreamwayz/$PACKAGE:$VERSION" --cache-from "xtreamwayz/$PACKAGE:$VERSION" .
+      docker run -ti --rm "xtreamwayz/$PACKAGE:$VERSION" php --version
+      docker run -ti --rm "xtreamwayz/$PACKAGE:$VERSION" php --ini
+      docker run -ti --rm "xtreamwayz/$PACKAGE:$VERSION" php -m
     )
+
+after_script:
+  - docker images
