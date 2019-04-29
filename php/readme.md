@@ -15,10 +15,8 @@ A collection of customized containers for a Docker web development stack. Where 
 ## Includes
 
 - PHP-FPM + CLI
-- Extensions: bcmath, curl, ctype, dom, gd, iconv, intl, json, mbstring, mcrypt, mysql *(5.6 only)*, mysqli, opcache, openssl, pcntl, pdo, pdo_mysql, pdo_sqlite, phar, session, sockets, xdebug, xml, xmlreader, redis, zip, zlib
-- [composer](https://getcomposer.org/doc/)
+- Extensions: bcmath, Core, ctype, curl, date, dom, exif, fileinfo, filter, ftp, gd, hash, iconv, intl, json, libxml, mbstring, mysqli, mysqlnd, openssl, pcntl, pcre, PDO, pdo_mysql, pdo_sqlite, Phar, posix, readline, redis, Reflection, session, SimpleXML, SPL, sqlite3, standard, tokenizer, xml, xmlreader, xmlwriter, Zend OPcache, zlib
 - [ssmtp](http://linux.die.net/man/8/ssmtp) to catch php mail() and forward to [MailHog](https://github.com/mailhog/MailHog)
-- [SPX - Simple Profiling eXtension](https://github.com/NoiseByNorthwest/php-spx) can be accessed via its web UI control panel at [http://localhost/_spx/?SPX_KEY=dev](http://localhost/_spx/?SPX_KEY=dev).
 
 ## Usage
 
@@ -26,7 +24,7 @@ Add this to your `docker-compose.yml` file:
 
 ```yaml
   php:
-    image: xtreamwayz/php:7.2
+    image: xtreamwayz/php:7.3
     container_name: PROJECT_ID-php
     volumes:
       - .:/app:ro,cached
