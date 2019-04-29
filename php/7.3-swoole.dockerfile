@@ -101,4 +101,8 @@ RUN set -xe \
 
 COPY etc /usr/local/etc
 
+RUN set -xe \
+    && : "---------- Display some debug output ----------" \
+    && php --version && php --ini && php -m
+
 WORKDIR /app

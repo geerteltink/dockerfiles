@@ -97,5 +97,9 @@ COPY etc /usr/local/etc
 
 WORKDIR /app
 
+RUN set -xe \
+    && : "---------- Display some debug output ----------" \
+    && php --version && php --ini && php -m
+
 ENTRYPOINT ["tini", "--"]
 CMD ["php-fpm"]
