@@ -1,6 +1,6 @@
 FROM php:7.1-fpm-alpine
 
-LABEL repository.hub="xtreamwayz/php:7.1-fpm" \
+LABEL repository.hub="xtreamwayz/php:7.1-xdebug" \
       repository.url="https://github.com/xtreamwayz/dckr-stack/tree/master/php"
 
 ARG REDIS_TAG=4.3.0
