@@ -66,7 +66,7 @@ RUN set -xe \
         pcntl \
         pdo_mysql \
     && : "---------- Redis ----------" \
-    && git clone -o ${REDIS_TAG} --depth 1 https://github.com/phpredis/phpredis.git /tmp/redis \
+    && git clone --branch ${REDIS_TAG} --depth 1 https://github.com/phpredis/phpredis.git /tmp/redis \
     && cd /tmp/redis \
     && phpize \
     && ./configure \

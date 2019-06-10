@@ -69,14 +69,14 @@ RUN set -xe \
         pcntl \
         pdo_mysql \
     && : "---------- Redis ----------" \
-    && git clone -o ${REDIS_TAG} --depth 1 https://github.com/phpredis/phpredis.git /tmp/redis \
+    && git clone --branch ${REDIS_TAG} --depth 1 https://github.com/phpredis/phpredis.git /tmp/redis \
     && cd /tmp/redis \
     && phpize \
     && ./configure \
     && make \
     && make install \
     && : "---------- xDebug ----------" \
-    && git clone -o ${XDEBUG_BRANCH} --depth 1 https://github.com/xdebug/xdebug.git /tmp/xdebug \
+    && git clone --branch ${XDEBUG_BRANCH} --depth 1 https://github.com/xdebug/xdebug.git /tmp/xdebug \
     && cd /tmp/xdebug \
     && phpize \
     && ./configure \
