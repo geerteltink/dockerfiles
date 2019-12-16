@@ -6,23 +6,29 @@ on:
       - master
 
 jobs:
-  build:
-    name: Build ${{ matrix.PACKAGE }}-${{ matrix.VERSION }}
+  php-7.4-cli:
+    env:
+      PACKAGE: php
+      VERSION: 7.4-cli
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        os: ['ubuntu-latest']
-        include:
-          - PACKAGE: php
-            VERSION: 7.4-cli
-          - PACKAGE: php
-            VERSION: 7.4-fpm
-          - PACKAGE: php
-            VERSION: 7.4-test
-          - PACKAGE: mysql
-            VERSION: latest
-          - PACKAGE: nginx
-            VERSION: latest
     steps:
     - uses: actions/checkout@v1
-    - run: echo "${{ matrix.PACKAGE }}:${{ matrix.VERSION }}"
+    - run: echo "${{ PACKAGE }}:${{ VERSION }}"
+
+  php-7.4-fpm:
+    env:
+      PACKAGE: php
+      VERSION: 7.4-fpm
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - run: echo "${{ env.PACKAGE }}:${{ env.VERSION }}"
+
+  php-7.4-test:
+    env:
+      PACKAGE: php
+      VERSION: 7.4-test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - run: echo "${{ PACKAGE }}:${{ VERSION }}"
