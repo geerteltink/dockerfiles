@@ -7,10 +7,11 @@ on:
 
 jobs:
   build:
-    name: Build ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
+    name: Build ${{ matrix.PACKAGE }}-${{ matrix.VERSION }}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
+        os: ['ubuntu-latest']
         include:
           - PACKAGE: php
             VERSION: 7.4-cli
