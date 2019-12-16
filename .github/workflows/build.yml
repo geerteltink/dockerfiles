@@ -7,7 +7,8 @@ on:
 
 jobs:
 
-  php_7_4_fpm:
+  php_7_4_cli:
+    name: "php:7.4-cli"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -16,7 +17,22 @@ jobs:
         login-server: index.docker.io
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
-    - run: |
-        cd php
-        docker build . --file 7.4-fpm.dockerfile --tag "xtreamwayz/php:7.4-fpm" --cache-from "xtreamwayz/php:7.4-fpm"
-        docker push "xtreamwayz/php:7.4-fpm"
+    - name: Build image
+      run: cd php && docker build . --file 7.4-cli.dockerfile --tag "xtreamwayz/php:7.4-cli" --cache-from "xtreamwayz/php:7.4-cli"
+    - name: Push image
+      run: docker push "xtreamwayz/php:7.4-cli"
+
+  php_7_4_fpm:
+    name: "php:7.4-fpm"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: azure/docker-login@v1
+      with:
+        login-server: index.docker.io
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+    - name: Build image
+      run: cd php && docker build . --file 7.4-fpm.dockerfile --tag "xtreamwayz/php:7.4-fpm" --cache-from "xtreamwayz/php:7.4-fpm"
+    - name: Push image
+      run: docker push "xtreamwayz/php:7.4-fpm"
