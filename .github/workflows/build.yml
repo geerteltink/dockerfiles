@@ -1,0 +1,27 @@
+name: build
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Build ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - PACKAGE: php
+            VERSION: 7.4-cli
+          - PACKAGE: php
+            VERSION: 7.4-fpm
+          - PACKAGE: php
+            VERSION: 7.4-test
+          - PACKAGE: mysql
+            VERSION: latest
+          - PACKAGE: nginx
+            VERSION: latest
+    steps:
+    - uses: actions/checkout@v1
+    - run: echo "${{ matrix.PACKAGE }}:${{ matrix.VERSION }}"
