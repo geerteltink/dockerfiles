@@ -1,4 +1,4 @@
-FROM xtreamwayz:7.4-cli
+FROM xtreamwayz/php:7.4-cli
 
 RUN set -xe \
     && : "---------- Persistent dependencies ----------" \
