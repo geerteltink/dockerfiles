@@ -11,6 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - run: |
-      cd php
-      docker build . --file 7.4-fpm.dockerfile --tag php:7.4-fpm
+    - run: cd php && docker build . --file 7.4-fpm.dockerfile --tag php:7.4-fpm
