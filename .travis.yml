@@ -2,9 +2,9 @@ language: bash
 services: docker
 
 env:
-  - PACKAGE=php VERSION=7.1-fpm
-  - PACKAGE=php VERSION=7.2-fpm
-  - PACKAGE=php VERSION=7.3-fpm
+  - PACKAGE=php VERSION=7.4-cli
+  - PACKAGE=php VERSION=7.4-fpm
+  - PACKAGE=php VERSION=7.4-test
   - PACKAGE=mysql VERSION=latest
   - PACKAGE=nginx VERSION=latest
 
