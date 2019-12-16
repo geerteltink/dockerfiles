@@ -1,16 +1,16 @@
-# dckr-stack
+# dockerfiles
 
-[![Build Status](https://travis-ci.com/xtreamwayz/dckr-stack.svg?branch=master)](https://travis-ci.com/xtreamwayz/dckr-stack)
+[![Build Status](https://travis-ci.com/xtreamwayz/dockerfiles.svg?branch=master)](https://travis-ci.com/xtreamwayz/dockerfiles)
 
-*This is part of the [xtreamwayz/dckr-stack](https://github.com/xtreamwayz/dckr-stack).*
+*This is part of the [xtreamwayz/dockerfiles](https://github.com/xtreamwayz/dockerfiles).*
 
 A collection of customized containers for a Docker web development stack. Where possible the containers are build on top of [Alpine Linux](http://alpinelinux.org/) for a small footprint.
 
-## dckr-stack containers
+## containers
 
-- **xtreamwayz/nginx:** [latest](https://github.com/xtreamwayz/dckr-stack/blob/master/nginx/Dockerfile)
-- **xtreamwayz/php:** [5.6](https://github.com/xtreamwayz/dckr-stack/blob/master/php/5.6-fpm), [7.1-fpm](https://github.com/xtreamwayz/dckr-stack/blob/master/php/7.1-fpm), [7.2-fpm](https://github.com/xtreamwayz/dckr-stack/blob/master/php/7.2-fpm), [7.3-fpm](https://github.com/xtreamwayz/dckr-stack/blob/master/php/7.3-fpm)
-- **xtreamwayz/mysql:** [latest](https://github.com/xtreamwayz/dckr-stack/blob/master/mysql/Dockerfile)
+- **xtreamwayz/nginx:** [latest](https://github.com/xtreamwayz/dockerfiles/blob/master/nginx)
+- **xtreamwayz/php:** 7.4-cli, 7.4-fpm, 7.4-test (including composer) 
+- **xtreamwayz/mysql:** [latest](https://github.com/xtreamwayz/dockerfiles/blob/master/mysql)
 
 ## Usage
 
@@ -21,7 +21,6 @@ A collection of customized containers for a Docker web development stack. Where 
 - For consistency the source code lives in the `/app` dir.
 - The app is available at [http://localhost/](http://localhost/).
 - [MailHog](https://github.com/mailhog/MailHog) is used to catch emails and can be accessed at [http://localhost:8025/](http://localhost:8025/).
-- [SPX - Simple Profiling eXtension](https://github.com/NoiseByNorthwest/php-spx) can be accessed via its web UI control panel at [http://localhost/_spx/?SPX_KEY=dev](http://localhost/_spx/?SPX_KEY=dev).
 
 ## Fixing "Permission Denied" Issues
 
