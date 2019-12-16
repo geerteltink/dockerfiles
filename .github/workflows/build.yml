@@ -16,7 +16,7 @@ jobs:
       run: cd php && docker build . --file 7.4-cli.dockerfile --tag "xtreamwayz/php:7.4-cli" --cache-from "xtreamwayz/php:7.4-cli"
     - name: Push image
       run: |
-        docker login --username "${REGISTRY_USERNAME}" --password "${REGISTRY_PASSWORD}"  
+        echo "${REGISTRY_PASSWORD}" | docker login --username "${REGISTRY_USERNAME}" --password-stdin
         docker push "xtreamwayz/php:7.4-cli"
       env:
         REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
@@ -32,7 +32,7 @@ jobs:
       run: cd php && docker build . --file 7.4-test.dockerfile --tag "xtreamwayz/php:7.4-test" --cache-from "xtreamwayz/php:7.4-test"
     - name: Push image
       run: |
-        docker login --username "${REGISTRY_USERNAME}" --password "${REGISTRY_PASSWORD}"  
+        echo "${REGISTRY_PASSWORD}" | docker login --username "${REGISTRY_USERNAME}" --password-stdin
         docker push "xtreamwayz/php:7.4-test"
       env:
         REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
@@ -47,7 +47,7 @@ jobs:
       run: cd php && docker build . --file 7.4-fpm.dockerfile --tag "xtreamwayz/php:7.4-fpm" --cache-from "xtreamwayz/php:7.4-fpm"
     - name: Push image
       run: |
-        docker login --username "${REGISTRY_USERNAME}" --password "${REGISTRY_PASSWORD}"  
+        echo "${REGISTRY_PASSWORD}" | docker login --username "${REGISTRY_USERNAME}" --password-stdin
         docker push "xtreamwayz/php:7.4-fpm"
       env:
         REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
