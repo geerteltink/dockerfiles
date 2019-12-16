@@ -7,8 +7,16 @@ on:
 
 jobs:
 
-  php_7_4_cli:
+  php_7_4_fpm:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - run: cd php && docker build . --file 7.4-fpm.dockerfile --tag php:7.4-fpm
+    - uses: azure/docker-login@v1
+      with:
+        login-server: index.docker.io
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+    - run: |
+        cd php
+        docker build . --file 7.4-fpm.dockerfile --tag "xtreamwayz/php:7.4-fpm" --cache-from "xtreamwayz/php:7.4-fpm"
+        docker push "xtreamwayz/php:7.4-fpm"
