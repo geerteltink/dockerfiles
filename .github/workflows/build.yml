@@ -7,7 +7,7 @@ on:
 
 jobs:
 
-  php-7.4-cli:
+  php_7_4_cli:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
