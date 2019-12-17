@@ -56,10 +56,15 @@ RUN set -xe \
         /var/cache/apk/* \
         /var/tmp/* \
     && : "---------- Copy config ----------" \
-    && mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+    && mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" \
+    && : "---------- Create /app ----------" \
+    && mkdir /app
 
 COPY conf.d $PHP_INI_DIR/conf.d/
+COPY ssmtp/ssmtp.conf /etc/ssmtp/ssmtp.conf
 
 RUN set -xe \
     && : "---------- Display some debug output ----------" \
     && php --version && php --ini && php -m
+
+WORKDIR /app
