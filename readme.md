@@ -8,9 +8,9 @@ A collection of customized containers for a Docker web development stack. Where 
 
 ## containers
 
-- **xtreamwayz/nginx:** [latest](https://github.com/xtreamwayz/dockerfiles/blob/master/nginx)
-- **xtreamwayz/php:** 7.4-cli, 7.4-fpm, 7.4-test (including composer) 
-- **xtreamwayz/mysql:** [latest](https://github.com/xtreamwayz/dockerfiles/blob/master/mysql)
+- **xtreamwayz/nginx:** [latest](https://github.com/xtreamwayz/dckr-stack/blob/master/nginx/Dockerfile)
+- **xtreamwayz/php:** [7.4-cli](https://github.com/xtreamwayz/dckr-stack/blob/master/php/7.4-cli.dockerfile), [7.4-fpm](https://github.com/xtreamwayz/dckr-stack/blob/master/php/7.4-fpm.dockerfile)
+- **xtreamwayz/mysql:** [latest](https://github.com/xtreamwayz/dckr-stack/blob/master/mysql/Dockerfile)
 
 ## Usage
 

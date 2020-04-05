@@ -4,6 +4,9 @@ RUN set -xe \
     && : "---------- Persistent dependencies ----------" \
     && apk add --no-cache --virtual .persistent-dependencies \
         ssmtp \
+        bash \
+        git \
+        jq \
     && : "---------- Build dependencies ----------" \
     && apk add --no-cache --virtual .build-dependencies \
 		autoconf \
@@ -63,6 +66,7 @@ RUN set -xe \
 COPY conf.d $PHP_INI_DIR/conf.d/
 COPY pool.d $PHP_INI_DIR/pool.d/
 COPY ssmtp/ssmtp.conf /etc/ssmtp/ssmtp.conf
+COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 RUN set -xe \
     && : "---------- Display some debug output ----------" \
