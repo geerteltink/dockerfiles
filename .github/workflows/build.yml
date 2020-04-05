@@ -24,22 +24,6 @@ jobs:
         REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
         REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
 
-  php_7_4_test:
-    needs: php_7_4_cli
-    name: "php:7.4-test"
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - name: Build image
-      run: cd php && docker build . --file 7.4-test.dockerfile --tag "xtreamwayz/php:7.4-test" --cache-from "xtreamwayz/php:7.4-test"
-    - name: Push image
-      run: |
-        echo "${REGISTRY_PASSWORD}" | docker login --username "${REGISTRY_USERNAME}" --password-stdin
-        docker push "xtreamwayz/php:7.4-test"
-      env:
-        REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
-        REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
-
   php_7_4_fpm:
     name: "php:7.4-fpm"
     runs-on: ubuntu-latest
