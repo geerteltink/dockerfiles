@@ -33,12 +33,12 @@ RUN set -xe \
         --with-jpeg \
     && docker-php-ext-configure intl \
     && docker-php-ext-install -j$(nproc) bcmath exif gd intl opcache pcntl mysqli pdo_mysql \
-    && : "---------- redis ----------" \
-    && pecl install -o -f redis \
-    && docker-php-ext-enable redis \
-    && : "---------- xdebug ----------" \
-    && pecl install -o -f xdebug \
-    && docker-php-ext-enable xdebug \
+    # && : "---------- redis ----------" \
+    # && pecl install -o -f redis \
+    # && docker-php-ext-enable redis \
+    # && : "---------- xdebug ----------" \
+    # && pecl install -o -f xdebug \
+    # && docker-php-ext-enable xdebug \
     && : "---------- runtime dependencies ----------" \
     && runtimeDeps="$( \
         scanelf --needed --nobanner --recursive /usr/local \
