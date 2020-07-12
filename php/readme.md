@@ -1,16 +1,16 @@
 # PHP-FPM Docker Container
 
-[![Build Status](https://travis-ci.com/xtreamwayz/dckr-stack.svg?branch=master)](https://travis-ci.com/xtreamwayz/dckr-stack)
+[![build](https://github.com/xtreamwayz/dockerfiles/workflows/build/badge.svg)](https://github.com/xtreamwayz/dockerfiles/actions)
 
-*This is part of the [xtreamwayz/dckr-stack](https://github.com/xtreamwayz/dckr-stack).*
+_This is part of the [xtreamwayz/dockerfiles](https://github.com/xtreamwayz/dockerfiles)._
 
 A collection of customized containers for a Docker web development stack. Where possible the containers are build on top of [Alpine Linux](http://alpinelinux.org/) for a small footprint.
 
-## dckr-stack containers
+## containers
 
-- **xtreamwayz/nginx:** [latest](https://github.com/xtreamwayz/dckr-stack/blob/master/nginx/Dockerfile)
-- **xtreamwayz/php:** [7.4-cli](https://github.com/xtreamwayz/dckr-stack/blob/master/php/7.4-cli.dockerfile), [7.4-fpm](https://github.com/xtreamwayz/dckr-stack/blob/master/php/7.4-fpm.dockerfile)
-- **xtreamwayz/mysql:** [latest](https://github.com/xtreamwayz/dckr-stack/blob/master/mysql/Dockerfile)
+- **xtreamwayz/nginx:** [latest](https://github.com/xtreamwayz/dockerfiles/blob/master/nginx/latest.dockerfile)
+- **xtreamwayz/php:** [7.4-cli](https://github.com/xtreamwayz/dockerfiles/blob/master/php/7.4-cli.dockerfile), [7.4-fpm](https://github.com/xtreamwayz/dockerfiles/blob/master/php/7.4-fpm.dockerfile)
+- **xtreamwayz/mysql:** [latest](https://github.com/xtreamwayz/dockerfiles/blob/master/mysql/latest.dockerfile)
 
 ## Includes
 
@@ -23,12 +23,12 @@ A collection of customized containers for a Docker web development stack. Where 
 Add this to your `docker-compose.yml` file:
 
 ```yaml
-  php:
-    image: xtreamwayz/php:7.3
-    container_name: PROJECT_ID-php
-    volumes:
-      - .:/app:ro,cached
-      - ./data:/app/data:rw,delegated
+php:
+  image: xtreamwayz/php:7.3
+  container_name: PROJECT_ID-php
+  volumes:
+    - .:/app:ro,cached
+    - ./data:/app/data:rw,delegated
 ```
 
 ## Xdebug

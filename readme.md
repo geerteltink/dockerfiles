@@ -1,16 +1,16 @@
 # dockerfiles
 
-[![Build Status](https://travis-ci.com/xtreamwayz/dockerfiles.svg?branch=master)](https://travis-ci.com/xtreamwayz/dockerfiles)
+[![build](https://github.com/xtreamwayz/dockerfiles/workflows/build/badge.svg)](https://github.com/xtreamwayz/dockerfiles/actions)
 
-*This is part of the [xtreamwayz/dockerfiles](https://github.com/xtreamwayz/dockerfiles).*
+_This is part of the [xtreamwayz/dockerfiles](https://github.com/xtreamwayz/dockerfiles)._
 
 A collection of customized containers for a Docker web development stack. Where possible the containers are build on top of [Alpine Linux](http://alpinelinux.org/) for a small footprint.
 
 ## containers
 
-- **xtreamwayz/nginx:** [latest](https://github.com/xtreamwayz/dckr-stack/blob/master/nginx/Dockerfile)
-- **xtreamwayz/php:** [7.4-cli](https://github.com/xtreamwayz/dckr-stack/blob/master/php/7.4-cli.dockerfile), [7.4-fpm](https://github.com/xtreamwayz/dckr-stack/blob/master/php/7.4-fpm.dockerfile)
-- **xtreamwayz/mysql:** [latest](https://github.com/xtreamwayz/dckr-stack/blob/master/mysql/Dockerfile)
+- **xtreamwayz/nginx:** [latest](https://github.com/xtreamwayz/dockerfiles/blob/master/nginx/latest.dockerfile)
+- **xtreamwayz/php:** [7.4-cli](https://github.com/xtreamwayz/dockerfiles/blob/master/php/7.4-cli.dockerfile), [7.4-fpm](https://github.com/xtreamwayz/dockerfiles/blob/master/php/7.4-fpm.dockerfile)
+- **xtreamwayz/mysql:** [latest](https://github.com/xtreamwayz/dockerfiles/blob/master/mysql/latest.dockerfile)
 
 ## Usage
 
@@ -32,7 +32,7 @@ sudo setfacl -Rm g:82:rwX,d:g:82:rwX /home/<username>/projects
 
 Setup permissions for docker so the files can be accessed and deleted.
 The trick is to use the uid's from the docker processes.
-*www-data/nginx: 82 - docker: 999 - mysql: 28*
+_www-data/nginx: 82 - docker: 999 - mysql: 28_
 
 ```bash
 # Preserve default permissions for new files and folders
@@ -54,31 +54,37 @@ docker build -f Dockerfile -t dev .
 ## Docker commands
 
 Start containers
+
 ```bash
 $ docker-compose up -d
 ```
 
 Start and force rebuilding the containers
+
 ```bash
 $ docker-compose up --build
 ```
 
 Stop containers
+
 ```bash
 $ docker-compose stop
 ```
 
 Update containers
+
 ```bash
 $ docker-compose pull
 ```
 
 Stream logs from all containers to the console
+
 ```bash
 $ docker-compose logs -t -f
 ```
 
 Start a terminal for <container_name>
+
 ```bash
 # With docker-compose
 $ docker-compose run --rm php /bin/bash   # Ubuntu/Debian based
@@ -91,31 +97,37 @@ $ docker exec -ti <container_name> /bin/sh     # Alpine Linux based
 ## Docker maintenance commands
 
 Stats for running containers
+
 ```bash
 $ docker stats -a
 ```
 
 Show used space, similar to the unix tool df
+
 ```bash
 $ docker system df
 ```
 
 Remove development junk: unused volumes, networks, exited containers and unused images
+
 ```bash
 $ docker system prune --force --all
 ```
 
 List all images
+
 ```bash
 $ docker images
 ```
 
 List containers
+
 ```bash
 $ docker ps
 ```
 
 Force stop all containers in PowerShell
+
 ```powershell
 > docker ps -a -q | ForEach { docker stop $_ }
 ```
