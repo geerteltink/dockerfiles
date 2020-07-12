@@ -1,0 +1,24 @@
+name: build-mysql
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: "* 22 * * 4"
+
+jobs:
+  mysql:
+    name: "mysql:latest"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Build image
+        run: cd mysql && docker build . --file latest.dockerfile --tag "xtreamwayz/mysql:latest" --cache-from "xtreamwayz/mysql:latest"
+      - name: Push image
+        run: |
+          echo "${REGISTRY_PASSWORD}" | docker login --username "${REGISTRY_USERNAME}" --password-stdin
+          docker push "xtreamwayz/mysql:latest"
+        env:
+          REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
+          REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
