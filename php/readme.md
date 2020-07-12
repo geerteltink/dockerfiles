@@ -25,7 +25,7 @@ Add this to your `docker-compose.yml` file:
 
 ```yaml
 php:
-  image: xtreamwayz/php:7.3
+  image: xtreamwayz/php:7.4
   container_name: PROJECT_ID-php
   volumes:
     - .:/app:ro,cached
