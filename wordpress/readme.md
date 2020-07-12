@@ -1,7 +1,5 @@
 # WordPress Docker Container
 
-[![build](https://github.com/xtreamwayz/dockerfiles/workflows/build/badge.svg)](https://github.com/xtreamwayz/dockerfiles/actions)
-
 _This is part of the [xtreamwayz/dockerfiles](https://github.com/xtreamwayz/dockerfiles)._
 
 A collection of customized containers for a Docker web development stack. Where possible the containers are build on top of [Alpine Linux](http://alpinelinux.org/) for a small footprint.
@@ -9,7 +7,7 @@ A collection of customized containers for a Docker web development stack. Where 
 ## containers
 
 - **xtreamwayz/nginx:** [latest](https://github.com/xtreamwayz/dockerfiles/blob/master/nginx/latest.dockerfile)
-- **xtreamwayz/php:** [7.4-cli](https://github.com/xtreamwayz/dockerfiles/blob/master/php/7.4-cli.dockerfile), [7.4-fpm](https://github.com/xtreamwayz/dockerfiles/blob/master/php/7.4-fpm.dockerfile)
+- **xtreamwayz/php:** [7.4-cli](https://github.com/xtreamwayz/dockerfiles/blob/master/php/7.4-cli.dockerfile), [7.4-fpm](https://github.com/xtreamwayz/dockerfiles/blob/master/php/7.4-fpm.dockerfile),[8.0-cli](https://github.com/xtreamwayz/dockerfiles/blob/master/php/8.0-cli.dockerfile), [8.0-fpm](https://github.com/xtreamwayz/dockerfiles/blob/master/php/8.0-fpm.dockerfile)
 - **xtreamwayz/mysql:** [latest](https://github.com/xtreamwayz/dockerfiles/blob/master/mysql/latest.dockerfile)
 
 ## Structure
