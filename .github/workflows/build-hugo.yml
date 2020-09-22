@@ -1,0 +1,24 @@
+name: build-hugo
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: "* 22 * * 4"
+
+jobs:
+  hugo:
+    name: "mysql:latest"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build image
+        run: cd hugo && docker build . --file latest.dockerfile --tag "xtreamwayz/hugo:latest" --cache-from "xtreamwayz/hugo:latest" --compress
+      - name: Push image
+        run: |
+          echo "${REGISTRY_PASSWORD}" | docker login --username "${REGISTRY_USERNAME}" --password-stdin
+          docker push "xtreamwayz/hugo:latest"
+        env:
+          REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
+          REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}

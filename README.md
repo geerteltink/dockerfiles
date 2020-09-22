@@ -14,6 +14,7 @@ A collection of customized containers for a Docker web development stack. Where 
 - **xtreamwayz/nginx:** [latest](https://github.com/xtreamwayz/dockerfiles/blob/master/nginx/latest.dockerfile)
 - **xtreamwayz/php:** [7.4-cli](https://github.com/xtreamwayz/dockerfiles/blob/master/php/7.4-cli.dockerfile), [7.4-fpm](https://github.com/xtreamwayz/dockerfiles/blob/master/php/7.4-fpm.dockerfile),[8.0-cli](https://github.com/xtreamwayz/dockerfiles/blob/master/php/8.0-cli.dockerfile), [8.0-fpm](https://github.com/xtreamwayz/dockerfiles/blob/master/php/8.0-fpm.dockerfile)
 - **xtreamwayz/mysql:** [latest](https://github.com/xtreamwayz/dockerfiles/blob/master/mysql/latest.dockerfile)
+- **xtreamwayz/hugo:** [latest](https://github.com/xtreamwayz/dockerfiles/blob/master/hugo/latest.dockerfile)
 
 ## Usage
 
@@ -51,7 +52,8 @@ Xdebug is configured so it doesn't start automatically. You need to enable the d
 ## Building manually
 
 ```bash
-docker build -f Dockerfile -t dev .
+docker build . --file Dockerfile --tag dev
+docker run --rm -it tag
 ```
 
 ## Docker commands

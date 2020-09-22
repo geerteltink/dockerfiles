@@ -1,6 +1,6 @@
-# NGINX Docker Container
+# Hugo Docker Container
 
-![build-nginx](https://github.com/xtreamwayz/dockerfiles/workflows/build-nginx/badge.svg)
+![build-hugo](https://github.com/xtreamwayz/dockerfiles/workflows/build-hugo/badge.svg)
 
 _This is part of the [xtreamwayz/dockerfiles](https://github.com/xtreamwayz/dockerfiles)._
 
@@ -15,23 +15,18 @@ A collection of customized containers for a Docker web development stack. Where 
 
 ## Usage
 
-The documents are served from `.:/app/public` and can be accessed at http://127.0.0.1/.
-
-Add this to your `docker-compose.yml` file:
-
-```yaml
-web:
-  image: xtreamwayz/nginx
-  container_name: PROJECT_ID-web
-  ports:
-    - "80:80"
-  volumes:
-    - ./public:/app/public:ro,cached
+```bash
+docker build . --file latest.dockerfile --tag "xtreamwayz/hugo:latest" --cache-from "xtreamwayz/hugo:latest"
+docker run --rm -it xtreamwayz/hugo:latest npm install
+docker run --rm -it xtreamwayz/hugo:latest hugo <command>
 ```
 
 ## CLI commands
 
 ```bash
-# Access container
-docker exec -ti <PROJECT_ID>-web /bin/sh
+docker run --rm -it xtreamwayz/hugo:latest hugo help
+docker run --rm -it xtreamwayz/hugo:latest hugo version
+docker run --rm -it --volume $(pwd):/app xtreamwayz/hugo:latest npm install
+docker run --rm -it --volume $(pwd):/app xtreamwayz/hugo:latest hugo mod init website
+docker run --rm -it --volume $(pwd):/app xtreamwayz/hugo:latest hugo --gc --minify --enableGitInfo --environment production
 ```
