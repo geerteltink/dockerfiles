@@ -24,9 +24,9 @@ docker run --rm -it xtreamwayz/hugo:latest hugo <command>
 ## CLI commands
 
 ```bash
-docker run --rm -it xtreamwayz/hugo:latest hugo help
-docker run --rm -it xtreamwayz/hugo:latest hugo version
-docker run --rm -it --volume $(pwd):/app xtreamwayz/hugo:latest npm install
-docker run --rm -it --volume $(pwd):/app xtreamwayz/hugo:latest hugo mod init website
-docker run --rm -it --volume $(pwd):/app xtreamwayz/hugo:latest hugo --gc --minify --enableGitInfo --environment production
+docker run --rm -it xtreamwayz/hugo hugo help
+docker run --rm -it xtreamwayz/hugo hugo version
+docker run --rm -it --volume $(pwd):/src xtreamwayz/hugo npm install
+docker run --rm -it --volume $(pwd):/src xtreamwayz/hugo hugo mod init website
+docker run --rm -it --volume $(pwd):/src xtreamwayz/hugo hugo --gc --minify --enableGitInfo --environment production
 ```
