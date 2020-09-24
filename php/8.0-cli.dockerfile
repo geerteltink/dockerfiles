@@ -22,6 +22,7 @@ RUN set -xe \
         libjpeg-turbo-dev \
         libpng-dev \
         libwebp-dev \
+        libxslt-dev \
         zlib-dev \
         icu-dev \
     && : "---------- extract php source ----------" \
@@ -32,7 +33,7 @@ RUN set -xe \
         --with-freetype \
         --with-jpeg \
     && docker-php-ext-configure intl \
-    && docker-php-ext-install -j$(nproc) bcmath exif gd intl opcache pcntl mysqli pdo_mysql \
+    && docker-php-ext-install -j$(nproc) bcmath exif gd intl opcache pcntl mysqli pdo_mysql xsl \
     # && : "---------- redis ----------" \
     # && pecl install -o -f redis \
     # && docker-php-ext-enable redis \
