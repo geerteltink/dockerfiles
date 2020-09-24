@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build image
-        run: cd php && docker build . --file 7.4-cli.dockerfile --tag "xtreamwayz/php:7.4-cli" --cache-from "xtreamwayz/php:7.4-cli"
+        run: cd php && docker build . --file 7.4-cli.dockerfile --tag "xtreamwayz/php:7.4-cli" --cache-from "xtreamwayz/php:7.4-cli" --compress
       - name: Push image
         run: |
           echo "${REGISTRY_PASSWORD}" | docker login --username "${REGISTRY_USERNAME}" --password-stdin
@@ -29,7 +29,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build image
-        run: cd php && docker build . --file 7.4-fpm.dockerfile --tag "xtreamwayz/php:7.4-fpm" --cache-from "xtreamwayz/php:7.4-fpm"
+        run: cd php && docker build . --file 7.4-fpm.dockerfile --tag "xtreamwayz/php:7.4-fpm" --cache-from "xtreamwayz/php:7.4-fpm" --compress
       - name: Push image
         run: |
           echo "${REGISTRY_PASSWORD}" | docker login --username "${REGISTRY_USERNAME}" --password-stdin
