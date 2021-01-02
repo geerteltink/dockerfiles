@@ -3,7 +3,7 @@ name: build-hugo
 on:
   push:
     branches:
-      - master
+      - main
   schedule:
     - cron: "* 22 * * 4"
 
