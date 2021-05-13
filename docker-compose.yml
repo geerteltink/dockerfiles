@@ -10,7 +10,7 @@ services:
       - ./public:/app/public:ro,cached
 
   php:
-    image: xtreamwayz/php:7.2
+    image: xtreamwayz/php:8.0
     container_name: PROJECT_ID-php
     volumes:
       - .:/app:ro,cached
@@ -31,7 +31,7 @@ services:
     #  - ./resources/docker-initdb:/docker-entrypoint-initdb.d:ro,cached
 
   redis:
-    image: redis:3-alpine
+    image: redis:6-alpine
     container_name: PROJECT_ID-redis
 
   # Access mailhog at http://localhost:8025/
