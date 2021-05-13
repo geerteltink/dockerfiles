@@ -1,4 +1,4 @@
-FROM php:8.0-rc-fpm-alpine
+FROM php:8.0-fpm-alpine
 
 RUN set -xe \
     && : "---------- Persistent dependencies ----------" \
@@ -34,9 +34,9 @@ RUN set -xe \
         --with-jpeg \
     && docker-php-ext-configure intl \
     && docker-php-ext-install -j$(nproc) bcmath exif gd intl opcache pcntl mysqli pdo_mysql xsl \
-    # && : "---------- redis ----------" \
-    # && pecl install -o -f redis \
-    # && docker-php-ext-enable redis \
+    && : "---------- redis ----------" \
+    && pecl install -o -f redis \
+    && docker-php-ext-enable redis \
     # && : "---------- xdebug ----------" \
     # && pecl install -o -f xdebug \
     # && docker-php-ext-enable xdebug \
