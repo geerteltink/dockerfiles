@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build image
-        run: cd nginx && docker build . --file latest.dockerfile --tag "xtreamwayz/nginx:latest" --cache-from "xtreamwayz/nginx:latest" --compress
+        run: cd nginx && docker build . --file latest.dockerfile --tag "xtreamwayz/nginx:latest" --compress
       - name: Push image
         run: |
           echo "${REGISTRY_PASSWORD}" | docker login --username "${REGISTRY_USERNAME}" --password-stdin

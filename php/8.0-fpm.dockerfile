@@ -2,7 +2,7 @@ FROM php:8.0-fpm-alpine
 
 RUN set -xe \
     && : "---------- Fix possible vulnerabilities ----------" \
-    && apk --update --no-cache upgrade
+    && apk --update --no-cache upgrade \
     && : "---------- Persistent dependencies ----------" \
     && apk add --no-cache --virtual .persistent-dependencies \
         ssmtp \
