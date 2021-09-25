@@ -34,6 +34,18 @@ services:
     image: redis:6-alpine
     container_name: PROJECT_ID-redis
 
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: PROJECT_ID-redis-cmd
+    environment:
+      - REDIS_HOSTS=local:redis
+      - HTTP_USER=docker
+      - HTTP_PASSWORD=docker
+    ports:
+      - 8081:8081
+    depends_on:
+      - redis
+
   # Access mailhog at http://localhost:8025/
   mailhog:
     image: mailhog/mailhog
