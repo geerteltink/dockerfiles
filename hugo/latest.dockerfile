@@ -6,6 +6,8 @@ LABEL homepage="https://github.com/xtreamwayz/dockerfiles"
 LABEL maintainer="Geert Eltink"
 
 RUN set -xe \
+    && : "---------- Fix possible vulnerabilities ----------" \
+    && apk --update --no-cache upgrade
     && : "---------- Persistent dependencies ----------" \
     && apk add --no-cache --virtual .persistent-dependencies \
         git \
