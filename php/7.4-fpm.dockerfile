@@ -1,6 +1,8 @@
 FROM php:7.4-fpm-alpine
 
 RUN set -xe \
+    && apk update \
+    && apk upgrade \
     && : "---------- Persistent dependencies ----------" \
     && apk add --no-cache --virtual .persistent-dependencies \
         ssmtp \
@@ -52,6 +54,7 @@ RUN set -xe \
     && : "---------- Clean up ----------" \
     && docker-php-source delete \
     && apk del .build-dependencies \
+    && apk cache clean \
     && rm -rf \
         /tmp/* \
         /usr/includes/* \
