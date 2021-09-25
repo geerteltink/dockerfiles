@@ -2,8 +2,9 @@ name: build-nginx
 
 on:
   push:
-    branches:
-      - main
+    paths:
+      - 'nginx/**'
+    branches: main
   schedule:
     - cron: "* 22 * * 4"
 

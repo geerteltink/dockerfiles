@@ -2,8 +2,9 @@ name: build-hugo
 
 on:
   push:
-    branches:
-      - main
+    paths:
+      - 'hugo/**'
+    branches: main
   schedule:
     - cron: "* 22 * * 4"
 

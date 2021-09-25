@@ -2,8 +2,9 @@ name: build-php-7-4
 
 on:
   push:
-    branches:
-      - main
+    paths:
+      - 'php/**'
+    branches: main
   schedule:
     - cron: "* 22 * * 4"
 

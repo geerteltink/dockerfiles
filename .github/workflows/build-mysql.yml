@@ -2,8 +2,9 @@ name: build-mysql
 
 on:
   push:
-    branches:
-      - main
+    paths:
+      - 'mysql/**'
+    branches: main
   schedule:
     - cron: "* 22 * * 4"
 
