@@ -33,6 +33,7 @@ RUN set -xe \
         --prefix=/usr \
         --with-freetype \
         --with-jpeg \
+        --with-webp \
     && docker-php-ext-configure intl \
     && docker-php-ext-install -j$(nproc) bcmath exif gd intl opcache pcntl mysqli pdo_mysql xsl \
     && : "---------- redis ----------" \
