@@ -1,4 +1,4 @@
-name: build-php-8-0
+name: build-php-8-1
 
 on:
   push:
