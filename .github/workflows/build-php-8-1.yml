@@ -1,0 +1,40 @@
+name: build-php-8-0
+
+on:
+  push:
+    paths:
+      - 'php/**'
+    branches: main
+  schedule:
+    - cron: "* 22 * * 4"
+
+jobs:
+  php_8_1_cli:
+    name: "php:8.1-cli"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build image
+        run: cd php && docker build . --file 8.1-cli.dockerfile --tag "xtreamwayz/php:8.1-cli" --compress
+      - name: Push image
+        run: |
+          echo "${REGISTRY_PASSWORD}" | docker login --username "${REGISTRY_USERNAME}" --password-stdin
+          docker push "xtreamwayz/php:8.1-cli"
+        env:
+          REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
+          REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
+
+  php_8_1_fpm:
+    name: "php:8.1-fpm"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build image
+        run: cd php && docker build . --file 8.1-fpm.dockerfile --tag "xtreamwayz/php:8.1-fpm" --cache-from "xtreamwayz/php:8.1-fpm" --compress
+      - name: Push image
+        run: |
+          echo "${REGISTRY_PASSWORD}" | docker login --username "${REGISTRY_USERNAME}" --password-stdin
+          docker push "xtreamwayz/php:8.1-fpm"
+        env:
+          REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
+          REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
