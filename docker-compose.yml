@@ -10,7 +10,7 @@ services:
       - ./public:/app/public:ro,cached
 
   php:
-    image: xtreamwayz/php:8.0
+    image: xtreamwayz/php:8.0-cli
     container_name: PROJECT_ID-php
     volumes:
       - .:/app:ro,cached
