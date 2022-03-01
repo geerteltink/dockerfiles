@@ -13,7 +13,7 @@ jobs:
     name: "nginx:latest"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Build image
         run: cd nginx && docker build . --file latest.dockerfile --tag "xtreamwayz/nginx:latest" --compress
       - name: Push image

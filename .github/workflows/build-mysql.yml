@@ -13,7 +13,7 @@ jobs:
     name: "mysql:latest"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Build image
         run: cd mysql && docker build . --file latest.dockerfile --tag "xtreamwayz/mysql:latest" --compress
       - name: Push image

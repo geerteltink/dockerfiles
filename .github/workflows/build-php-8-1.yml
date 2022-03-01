@@ -13,7 +13,7 @@ jobs:
     name: "php:8.1-cli"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Build image
         run: cd php && docker build . --file 8.1-cli.dockerfile --tag "xtreamwayz/php:8.1-cli" --compress
       - name: Push image
@@ -28,7 +28,7 @@ jobs:
     name: "php:8.1-fpm"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Build image
         run: cd php && docker build . --file 8.1-fpm.dockerfile --tag "xtreamwayz/php:8.1-fpm" --cache-from "xtreamwayz/php:8.1-fpm" --compress
       - name: Push image

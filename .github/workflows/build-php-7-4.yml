@@ -13,7 +13,7 @@ jobs:
     name: "php:7.4-cli"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Build image
         run: cd php && docker build . --file 7.4-cli.dockerfile --tag "xtreamwayz/php:7.4-cli" --compress
       - name: Push image
@@ -28,7 +28,7 @@ jobs:
     name: "php:7.4-fpm"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Build image
         run: cd php && docker build . --file 7.4-fpm.dockerfile --tag "xtreamwayz/php:7.4-fpm" --cache-from "xtreamwayz/php:7.4-fpm" --compress
       - name: Push image
