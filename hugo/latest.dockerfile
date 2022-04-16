@@ -5,6 +5,9 @@ LABEL repository="https://github.com/xtreamwayz/dockerfiles"
 LABEL homepage="https://github.com/xtreamwayz/dockerfiles"
 LABEL maintainer="Geert Eltink"
 
+WORKDIR /src
+VOLUME /src
+
 RUN set -xe \
     && : "---------- Fix possible vulnerabilities ----------" \
     && apk --update --no-cache upgrade \
@@ -22,13 +25,12 @@ RUN set -xe \
         /usr/src/* \
         /var/cache/apk/* \
         /var/tmp/* \
+    && : "---------- Set git safe directory ----------" \
+    && git config --global --add safe.directory /src \
     && : "---------- Display some debug output ----------" \
     && node --version \
     && go version \
     && hugo version
-
-WORKDIR /src
-VOLUME /src
 
 EXPOSE 1313
 
