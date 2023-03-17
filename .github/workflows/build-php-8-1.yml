@@ -26,7 +26,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ./php
-          file: 8.1-cli.dockerfile
+          file: ./php/8.1-cli.dockerfile
           push: true
           tags: |
             geerteltink/php:8.1-cli
@@ -48,7 +48,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ./php
-          file: 8.1-fpm.dockerfile
+          file: ./php/8.1-fpm.dockerfile
           push: true
           tags: |
             geerteltink/php:8.1-fpm
