@@ -1,6 +1,7 @@
 name: build-php-8-1
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - 'php/**'
