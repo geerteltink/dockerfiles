@@ -16,6 +16,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Setup QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v2
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v2
         with:
@@ -27,10 +31,9 @@ jobs:
         with:
           context: ./php
           file: ./php/8.1-cli.dockerfile
+          platforms: linux/amd64
           push: true
-          tags: |
-            geerteltink/php:8.1-cli
-            ghcr.io/geerteltink/php:8.1-cli
+          tags: ${{ github.repository_owner }}/php:8.1-cli
 
   php_8_1_fpm:
     name: "php:8.1-fpm"
@@ -38,6 +41,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Setup QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v2
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v2
         with:
@@ -49,7 +56,6 @@ jobs:
         with:
           context: ./php
           file: ./php/8.1-fpm.dockerfile
+          platforms: linux/amd64
           push: true
-          tags: |
-            geerteltink/php:8.1-fpm
-            ghcr.io/geerteltink/php:8.1-fpm
+          tags: ${{ github.repository_owner }}/php:8.1-fpm
