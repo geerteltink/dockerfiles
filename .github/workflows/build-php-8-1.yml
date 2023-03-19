@@ -33,7 +33,7 @@ jobs:
           file: ./php/8.1-cli.dockerfile
           platforms: linux/amd64
           push: true
-          tags: ${{ github.repository_owner }}/php:8.1-cli
+          tags: ghcr.io/${{ github.repository_owner }}/php:8.1-cli
 
   php_8_1_fpm:
     name: "php:8.1-fpm"
@@ -58,4 +58,4 @@ jobs:
           file: ./php/8.1-fpm.dockerfile
           platforms: linux/amd64
           push: true
-          tags: ${{ github.repository_owner }}/php:8.1-fpm
+          tags: ghcr.io/${{ github.repository_owner }}/php:8.1-fpm
