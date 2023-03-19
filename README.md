@@ -4,13 +4,14 @@
 ![build-mysql](https://github.com/geerteltink/dockerfiles/workflows/build-mysql/badge.svg)
 ![build-php-8-0](https://github.com/geerteltink/dockerfiles/workflows/build-php-8-0/badge.svg)
 ![build-php-8-1](https://github.com/geerteltink/dockerfiles/workflows/build-php-8-1/badge.svg)
+![build-php-8-2](https://github.com/geerteltink/dockerfiles/workflows/build-php-8-2/badge.svg)
 
 A collection of customized containers for a Docker web development stack. Where possible the containers are build on top of [Alpine Linux](http://alpinelinux.org/) for a small footprint.
 
 ## containers
 
 - **ghcr.io/geerteltink/nginx:** [latest](https://github.com/geerteltink/dockerfiles/blob/master/nginx/latest.dockerfile)
-- **ghcr.io/geerteltink/php:** [8.0-cli](https://github.com/geerteltink/dockerfiles/blob/master/php/8.0-cli.dockerfile), [8.0-fpm](https://github.com/geerteltink/dockerfiles/blob/master/php/8.0-fpm.dockerfile), [8.1-cli](https://github.com/geerteltink/dockerfiles/blob/master/php/8.1-cli.dockerfile), [8.1-fpm](https://github.com/geerteltink/dockerfiles/blob/master/php/8.1-fpm.dockerfile)
+- **ghcr.io/geerteltink/php:** [8.0-cli](https://github.com/geerteltink/dockerfiles/blob/master/php/8.0-cli.dockerfile), [8.0-fpm](https://github.com/geerteltink/dockerfiles/blob/master/php/8.0-fpm.dockerfile), [8.1-cli](https://github.com/geerteltink/dockerfiles/blob/master/php/8.1-cli.dockerfile), [8.1-fpm](https://github.com/geerteltink/dockerfiles/blob/master/php/8.1-fpm.dockerfile), [8.2-cli](https://github.com/geerteltink/dockerfiles/blob/master/php/8.2-cli.dockerfile), [8.2-fpm](https://github.com/geerteltink/dockerfiles/blob/master/php/8.2-fpm.dockerfile)
 - **ghcr.io/geerteltink/mysql:** [latest](https://github.com/geerteltink/dockerfiles/blob/master/mysql/latest.dockerfile)
 
 ## Usage
