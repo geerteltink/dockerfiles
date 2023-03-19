@@ -2,7 +2,7 @@ version: "3"
 services:
 
   web:
-    image: geerteltink/nginx
+    image: ghcr.io/geerteltink/nginx
     container_name: PROJECT_ID-web
     ports:
       - "80:80"
@@ -10,14 +10,14 @@ services:
       - ./public:/app/public:ro,cached
 
   php:
-    image: geerteltink/php:8.1-fpm
+    image: ghcr.io/geerteltink/php:8.1-fpm
     container_name: PROJECT_ID-php
     volumes:
       - .:/app:ro,cached
       - ./data:/app/data:rw,delegated
 
   db:
-    image: geerteltink/mysql
+    image: ghcr.io/geerteltink/mysql
     container_name: PROJECT_ID-db
     ports:
       - "3306:3306"

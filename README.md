@@ -2,7 +2,6 @@
 
 ![build-nginx](https://github.com/geerteltink/dockerfiles/workflows/build-nginx/badge.svg)
 ![build-mysql](https://github.com/geerteltink/dockerfiles/workflows/build-mysql/badge.svg)
-![build-php-7-4](https://github.com/geerteltink/dockerfiles/workflows/build-php-7-4/badge.svg)
 ![build-php-8-0](https://github.com/geerteltink/dockerfiles/workflows/build-php-8-0/badge.svg)
 ![build-php-8-1](https://github.com/geerteltink/dockerfiles/workflows/build-php-8-1/badge.svg)
 
@@ -10,9 +9,9 @@ A collection of customized containers for a Docker web development stack. Where 
 
 ## containers
 
-- **geerteltink/nginx:** [latest](https://github.com/geerteltink/dockerfiles/blob/master/nginx/latest.dockerfile)
-- **geerteltink/php:** [7.4-cli](https://github.com/geerteltink/dockerfiles/blob/master/php/7.4-cli.dockerfile), [7.4-fpm](https://github.com/geerteltink/dockerfiles/blob/master/php/7.4-fpm.dockerfile), [8.0-cli](https://github.com/geerteltink/dockerfiles/blob/master/php/8.0-cli.dockerfile), [8.0-fpm](https://github.com/geerteltink/dockerfiles/blob/master/php/8.0-fpm.dockerfile), [8.1-cli](https://github.com/geerteltink/dockerfiles/blob/master/php/8.1-cli.dockerfile), [8.1-fpm](https://github.com/geerteltink/dockerfiles/blob/master/php/8.1-fpm.dockerfile)
-- **geerteltink/mysql:** [latest](https://github.com/geerteltink/dockerfiles/blob/master/mysql/latest.dockerfile)
+- **ghcr.io/geerteltink/nginx:** [latest](https://github.com/geerteltink/dockerfiles/blob/master/nginx/latest.dockerfile)
+- **ghcr.io/geerteltink/php:** [7.4-cli](https://github.com/geerteltink/dockerfiles/blob/master/php/7.4-cli.dockerfile), [7.4-fpm](https://github.com/geerteltink/dockerfiles/blob/master/php/7.4-fpm.dockerfile), [8.0-cli](https://github.com/geerteltink/dockerfiles/blob/master/php/8.0-cli.dockerfile), [8.0-fpm](https://github.com/geerteltink/dockerfiles/blob/master/php/8.0-fpm.dockerfile), [8.1-cli](https://github.com/geerteltink/dockerfiles/blob/master/php/8.1-cli.dockerfile), [8.1-fpm](https://github.com/geerteltink/dockerfiles/blob/master/php/8.1-fpm.dockerfile)
+- **ghcr.io/geerteltink/mysql:** [latest](https://github.com/geerteltink/dockerfiles/blob/master/mysql/latest.dockerfile)
 
 ## Usage
 
@@ -59,42 +58,42 @@ docker run --rm -it tag
 Start containers
 
 ```bash
-$ docker compose up -d
+docker compose up -d
 ```
 
 Start and force rebuilding the containers
 
 ```bash
-$ docker compose up --build
+docker compose up --build
 ```
 
 Stop containers
 
 ```bash
-$ docker compose stop
+docker compose stop
 ```
 
 Update containers
 
 ```bash
-$ docker compose pull
+docker compose pull
 ```
 
 Stream logs from all containers to the console
 
 ```bash
-$ docker compose logs -t -f
+docker compose logs -t -f
 ```
 
 Start a terminal for <container_name>
 
 ```bash
 # With docker compose
-$ docker compose run --rm php /bin/bash   # Ubuntu/Debian based
-$ docker compose run --rm php /bin/sh     # Alpine Linux based
+docker compose run --rm php /bin/bash   # Ubuntu/Debian based
+docker compose run --rm php /bin/sh     # Alpine Linux based
 # With docker
-$ docker exec -ti <container_name> /bin/bash   # Ubuntu/Debian based
-$ docker exec -ti <container_name> /bin/sh     # Alpine Linux based
+docker exec -ti <container_name> /bin/bash   # Ubuntu/Debian based
+docker exec -ti <container_name> /bin/sh     # Alpine Linux based
 ```
 
 ## Docker maintenance commands
@@ -102,35 +101,35 @@ $ docker exec -ti <container_name> /bin/sh     # Alpine Linux based
 Stats for running containers
 
 ```bash
-$ docker stats -a
+docker stats -a
 ```
 
 Show used space, similar to the unix tool df
 
 ```bash
-$ docker system df
+docker system df
 ```
 
 Remove development junk: unused volumes, networks, exited containers and unused images
 
 ```bash
-$ docker system prune --force --all
+docker system prune --force --all
 ```
 
 List all images
 
 ```bash
-$ docker images
+docker images
 ```
 
 List containers
 
 ```bash
-$ docker ps
+docker ps
 ```
 
 Force stop all containers in PowerShell
 
 ```powershell
-> docker ps -a -q | ForEach { docker stop $_ }
+docker ps -a -q | ForEach { docker stop $_ }
 ```
