@@ -1,19 +1,12 @@
 # PHP-FPM Docker Container
 
-![build-php-7-4](https://github.com/xtreamwayz/dockerfiles/workflows/build-php-7-4/badge.svg)
-![build-php-8-0](https://github.com/xtreamwayz/dockerfiles/workflows/build-php-8-0/badge.svg)
-![build-php-8-1](https://github.com/xtreamwayz/dockerfiles/workflows/build-php-8-1/badge.svg)
+![build-php-7-4](https://github.com/geerteltink/dockerfiles/workflows/build-php-7-4/badge.svg)
+![build-php-8-0](https://github.com/geerteltink/dockerfiles/workflows/build-php-8-0/badge.svg)
+![build-php-8-1](https://github.com/geerteltink/dockerfiles/workflows/build-php-8-1/badge.svg)
 
-_This is part of the [xtreamwayz/dockerfiles](https://github.com/xtreamwayz/dockerfiles)._
+_This is part of the [geerteltink/dockerfiles](https://github.com/geerteltink/dockerfiles)._
 
 A collection of customized containers for a Docker web development stack. Where possible the containers are build on top of [Alpine Linux](http://alpinelinux.org/) for a small footprint.
-
-## containers
-
-- **xtreamwayz/nginx:** [latest](https://github.com/xtreamwayz/dockerfiles/blob/master/nginx/latest.dockerfile)
-- **xtreamwayz/php:** [7.4-cli](https://github.com/xtreamwayz/dockerfiles/blob/master/php/7.4-cli.dockerfile), [7.4-fpm](https://github.com/xtreamwayz/dockerfiles/blob/master/php/7.4-fpm.dockerfile),[8.0-cli](https://github.com/xtreamwayz/dockerfiles/blob/master/php/8.0-cli.dockerfile), [8.0-fpm](https://github.com/xtreamwayz/dockerfiles/blob/master/php/8.0-fpm.dockerfile),[8.1-cli](https://github.com/xtreamwayz/dockerfiles/blob/master/php/8.1-cli.dockerfile), [8.1-fpm](https://github.com/xtreamwayz/dockerfiles/blob/master/php/8.1-fpm.dockerfile)
-- **xtreamwayz/mysql:** [latest](https://github.com/xtreamwayz/dockerfiles/blob/master/mysql/latest.dockerfile)
-- **xtreamwayz/hugo:** [latest](https://github.com/xtreamwayz/dockerfiles/blob/master/hugo/latest.dockerfile)
 
 ## Includes
 
@@ -27,7 +20,7 @@ Add this to your `docker-compose.yml` file:
 
 ```yaml
 php:
-  image: xtreamwayz/php:7.4
+  image: ghcr.io/geerteltink/php:7.4
   container_name: PROJECT_ID-php
   volumes:
     - .:/app:ro,cached

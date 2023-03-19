@@ -1,8 +1,5 @@
 FROM alpine:edge
 
-LABEL repository.hub="xtreamwayz/php:5" \
-      repository.url="https://github.com/xtreamwayz/dckr-stack/tree/master/php"
-
 RUN \
   apk add --update \
     curl \

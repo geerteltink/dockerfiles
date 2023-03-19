@@ -91,20 +91,15 @@ sort($extensions, SORT_NATURAL | SORT_FLAG_CASE);
         </div>
 
         <h2>Docs</h2>
-        <div style="-webkit-column-count:3;">
+        <div style="-webkit-column-count:2;">
             <div>
-                <a href="https://github.com/xtreamwayz/dckr-stack/blob/master/readme.md">
-                    dckr-stack
+                <a href="https://github.com/geerteltink/dockerfiles/blob/master/readme.md">
+                    dockerfiles
                 </a>
             </div>
             <div>
                 <a href="https://docs.docker.com/compose/overview/">
                     Docker Compose
-                </a>
-            </div>
-            <div>
-                <a href="https://xtreamwayz.github.io/blog/git-worklow/">
-                    Git workflow
                 </a>
             </div>
         </div>

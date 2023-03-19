@@ -1,8 +1,5 @@
 FROM php:7.3-fpm-alpine
 
-LABEL repository.hub="xtreamwayz/php:7.3-fpm" \
-      repository.url="https://github.com/xtreamwayz/dckr-stack/tree/master/php"
-
 ARG REDIS_TAG=4.3.0
 
 RUN set -xe \

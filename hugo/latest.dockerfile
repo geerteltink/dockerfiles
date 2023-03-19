@@ -1,10 +1,5 @@
 FROM golang:1-alpine
 
-LABEL version="hugo-extended"
-LABEL repository="https://github.com/xtreamwayz/dockerfiles"
-LABEL homepage="https://github.com/xtreamwayz/dockerfiles"
-LABEL maintainer="Geert Eltink"
-
 WORKDIR /src
 VOLUME /src
 
