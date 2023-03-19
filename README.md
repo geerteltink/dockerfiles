@@ -10,7 +10,7 @@ A collection of customized containers for a Docker web development stack. Where 
 ## containers
 
 - **ghcr.io/geerteltink/nginx:** [latest](https://github.com/geerteltink/dockerfiles/blob/master/nginx/latest.dockerfile)
-- **ghcr.io/geerteltink/php:** [7.4-cli](https://github.com/geerteltink/dockerfiles/blob/master/php/7.4-cli.dockerfile), [7.4-fpm](https://github.com/geerteltink/dockerfiles/blob/master/php/7.4-fpm.dockerfile), [8.0-cli](https://github.com/geerteltink/dockerfiles/blob/master/php/8.0-cli.dockerfile), [8.0-fpm](https://github.com/geerteltink/dockerfiles/blob/master/php/8.0-fpm.dockerfile), [8.1-cli](https://github.com/geerteltink/dockerfiles/blob/master/php/8.1-cli.dockerfile), [8.1-fpm](https://github.com/geerteltink/dockerfiles/blob/master/php/8.1-fpm.dockerfile)
+- **ghcr.io/geerteltink/php:** [8.0-cli](https://github.com/geerteltink/dockerfiles/blob/master/php/8.0-cli.dockerfile), [8.0-fpm](https://github.com/geerteltink/dockerfiles/blob/master/php/8.0-fpm.dockerfile), [8.1-cli](https://github.com/geerteltink/dockerfiles/blob/master/php/8.1-cli.dockerfile), [8.1-fpm](https://github.com/geerteltink/dockerfiles/blob/master/php/8.1-fpm.dockerfile)
 - **ghcr.io/geerteltink/mysql:** [latest](https://github.com/geerteltink/dockerfiles/blob/master/mysql/latest.dockerfile)
 
 ## Usage
