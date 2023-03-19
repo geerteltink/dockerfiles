@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "local>ghcr.io/geerteltink/.github:renovate-config"
+    "github>geerteltink/.github:renovate-config"
   ]
 }
