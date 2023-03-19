@@ -16,9 +16,9 @@ A collection of customized containers for a Docker web development stack. Where 
 
 ## Usage
 
-1. Use a custom [docker-compose.yml](docker-compose.yml) file to do the work for you. Adjust the settings needed for the project.
+1. Use a custom [docker compose.yml](docker compose.yml) file to do the work for you. Adjust the settings needed for the project.
 2. Copy `.env.dist` to `.env` and change at least the project id.
-3. Start the container with `docker-compose up -d`.
+3. Start the container with `docker compose up -d`.
 
 - For consistency the source code lives in the `/app` dir.
 - The app is available at [http://localhost/](http://localhost/).
@@ -59,39 +59,39 @@ docker run --rm -it tag
 Start containers
 
 ```bash
-$ docker-compose up -d
+$ docker compose up -d
 ```
 
 Start and force rebuilding the containers
 
 ```bash
-$ docker-compose up --build
+$ docker compose up --build
 ```
 
 Stop containers
 
 ```bash
-$ docker-compose stop
+$ docker compose stop
 ```
 
 Update containers
 
 ```bash
-$ docker-compose pull
+$ docker compose pull
 ```
 
 Stream logs from all containers to the console
 
 ```bash
-$ docker-compose logs -t -f
+$ docker compose logs -t -f
 ```
 
 Start a terminal for <container_name>
 
 ```bash
-# With docker-compose
-$ docker-compose run --rm php /bin/bash   # Ubuntu/Debian based
-$ docker-compose run --rm php /bin/sh     # Alpine Linux based
+# With docker compose
+$ docker compose run --rm php /bin/bash   # Ubuntu/Debian based
+$ docker compose run --rm php /bin/sh     # Alpine Linux based
 # With docker
 $ docker exec -ti <container_name> /bin/bash   # Ubuntu/Debian based
 $ docker exec -ti <container_name> /bin/sh     # Alpine Linux based
