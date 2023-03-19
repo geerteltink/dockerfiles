@@ -38,9 +38,6 @@ RUN set -xe \
     && : "---------- redis ----------" \
     && pecl install -o -f redis \
     && docker-php-ext-enable redis \
-    && : "---------- xdebug ----------" \
-    && pecl install -o -f xdebug \
-    && docker-php-ext-enable xdebug \
     && : "---------- runtime dependencies ----------" \
     && runtimeDeps="$( \
         scanelf --needed --nobanner --recursive /usr/local \
