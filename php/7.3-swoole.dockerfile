@@ -1,4 +1,4 @@
-FROM php:7.3-cli-alpine
+FROM php:8.2-cli-alpine
 
 ARG REDIS_TAG=4.3.0
 

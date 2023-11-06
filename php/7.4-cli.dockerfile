@@ -1,4 +1,4 @@
-FROM php:7.4-cli-alpine
+FROM php:8.2-cli-alpine
 
 RUN set -xe \
     && : "---------- Fix possible vulnerabilities ----------" \

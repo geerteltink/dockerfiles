@@ -1,4 +1,4 @@
-FROM php:7.1-fpm-alpine
+FROM php:8.2-fpm-alpine
 
 ARG REDIS_TAG=4.3.0
 ARG XDEBUG_BRANCH=master
