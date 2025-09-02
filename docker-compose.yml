@@ -31,7 +31,7 @@ services:
     #  - ./resources/docker-initdb:/docker-entrypoint-initdb.d:ro,cached
 
   redis:
-    image: redis:7-alpine
+    image: redis:8-alpine
     container_name: PROJECT_ID-redis
 
   redis-commander:
